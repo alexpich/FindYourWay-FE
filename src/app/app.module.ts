@@ -16,6 +16,9 @@ import { HelpComponent } from './components/help/help.component';
 // Routes
 import {routes} from './routes/routes';
 
+import { RouterModule } from '@angular/router';
+import { CarouselComponent } from './components/carousel/carousel.component';
+
 
 
 @NgModule({
@@ -26,7 +29,8 @@ import {routes} from './routes/routes';
     RegisterComponent,
     HomeComponent,
     AboutComponent,
-    HelpComponent
+    HelpComponent,
+    CarouselComponent
 
   ],
   imports: [
