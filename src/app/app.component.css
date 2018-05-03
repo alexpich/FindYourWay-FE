@@ -1,0 +1,9 @@
+#carouselExampleSlidesOnly {
+    height: 100%;
+    z-index: -100;
+    position: fixed;
+}
+
+img {
+    opacity: 0.5;
+}
