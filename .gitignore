@@ -43,3 +43,5 @@ testem.log
 .DS_Store
 Thumbs.db
 node_modules/
+Dev_Branch/
+Richard_Vo/
