@@ -1,15 +1,11 @@
-<<<<<<< HEAD
-=======
-
-#carouselExampleSlidesOnly {
+#carousel{
     position: fixed; 
     top: 0; 
     left: 0; 
     z-index: -1;
-    opacity: .5;
+    opacity: .7;
     
     /* Preserve aspet ratio */
     min-width: 100%;
     min-height: 100%;
   }
->>>>>>> 20c4516770b65eb8cc4c61751f9b9017feee9a2e
