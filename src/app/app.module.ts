@@ -12,6 +12,7 @@ import { AboutComponent } from './components/about/about.component';
 import { HelpComponent } from './components/help/help.component';
 import {routes} from './routes/routes';
 import { RouterModule } from '@angular/router';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RouterModule } from '@angular/router';
     RegisterComponent,
     HomeComponent,
     AboutComponent,
-    HelpComponent
+    HelpComponent,
+    CarouselComponent
 
   ],
   imports: [
