@@ -18,9 +18,11 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import {routes} from './routes/routes';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { GetStartedComponent } from './components/get-started/get-started.component';
+
 import { QuestionsAComponent } from './components/questions-a/questions-a.component';
 import { QuestionBComponent } from './components/question-b/question-b.component';
 import { QuestionsCComponent } from './components/question-c/question-c.component';
+
 
 
 
@@ -37,10 +39,12 @@ import { QuestionsCComponent } from './components/question-c/question-c.componen
     HelpComponent,
     CarouselComponent,
     QuestionsComponent,
+
     GetStartedComponent,
     QuestionsAComponent,
     QuestionBComponent,
     QuestionsCComponent
+
 
   ],
   imports: [
