@@ -16,6 +16,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 
 // Routes
 import {routes} from './routes/routes';
+import { QuestionsComponent } from './components/questions/questions.component';
+import { GetStartedComponent } from './components/get-started/get-started.component';
 
 
 
@@ -30,7 +32,9 @@ import {routes} from './routes/routes';
     HomeComponent,
     AboutComponent,
     HelpComponent,
-    CarouselComponent
+    CarouselComponent,
+    QuestionsComponent,
+    GetStartedComponent
 
   ],
   imports: [
