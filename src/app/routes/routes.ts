@@ -6,6 +6,11 @@ import { RegisterComponent } from '../components/register/register.component';
 import { GetStartedComponent } from '../components/get-started/get-started.component';
 import { QuestionsComponent } from '../components/questions/questions.component';
 
+import { QuestionsAComponent } from '../components/questions-a/questions-a.component';
+import { QuestionBComponent } from '../components/question-b/question-b.component';
+import { QuestionsCComponent } from '../components/question-c/question-c.component';
+
+
 export const routes: Routes = [
     {
         path: 'login',
@@ -30,5 +35,19 @@ export const routes: Routes = [
     {
         path: 'questions',
         component: QuestionsComponent
+
+    },
+    {
+        path: 'questions-a',
+        component: QuestionsAComponent
+    },
+    {
+        path: 'questions-b',
+        component: QuestionBComponent
+    },
+    {
+        path: 'questions-c',
+        component: QuestionsCComponent
+
     }
 ];
