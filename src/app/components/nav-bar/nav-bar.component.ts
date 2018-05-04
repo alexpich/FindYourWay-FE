@@ -21,6 +21,10 @@ export class NavBarComponent implements OnInit {
     this.modalService.open(content, { centered: true });
   }
 
+  openVerticallyCenteredAbout(about) {
+    this.modalService.open(about, { centered: true });
+  }
+
   ngOnInit() {
   }
 }
