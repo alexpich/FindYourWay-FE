@@ -12,12 +12,17 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { HelpComponent } from './components/help/help.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 // Routes
 import {routes} from './routes/routes';
+import { QuestionsComponent } from './components/questions/questions.component';
+import { GetStartedComponent } from './components/get-started/get-started.component';
+import { QuestionsAComponent } from './components/questions-a/questions-a.component';
+import { QuestionBComponent } from './components/question-b/question-b.component';
+import { QuestionsCComponent } from './components/question-c/question-c.component';
 
-import { RouterModule } from '@angular/router';
-import { CarouselComponent } from './components/carousel/carousel.component';
+
 
 
 
@@ -30,7 +35,12 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     HomeComponent,
     AboutComponent,
     HelpComponent,
-    CarouselComponent
+    CarouselComponent,
+    QuestionsComponent,
+    GetStartedComponent,
+    QuestionsAComponent,
+    QuestionBComponent,
+    QuestionsCComponent
 
   ],
   imports: [
