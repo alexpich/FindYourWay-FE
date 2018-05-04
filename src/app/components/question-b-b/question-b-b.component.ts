@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-question-b',
-  templateUrl: './question-b.component.html',
-  styleUrls: ['./question-b.component.css']
+  selector: 'app-question-b-b',
+  templateUrl: './question-b-b.component.html',
+  styleUrls: ['./question-b-b.component.css']
 })
-export class QuestionBComponent implements OnInit {
+export class QuestionBBComponent implements OnInit {
 
   constructor(private location: Location) { }
 
