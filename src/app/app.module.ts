@@ -31,6 +31,9 @@ import { QuestionBADComponent } from './components/question-b-a-d/question-b-a-d
 import { QuestionBBAComponent } from './components/question-b-b-a/question-b-b-a.component';
 import { QuestionBBBComponent } from './components/question-b-b-b/question-b-b-b.component';
 import { QuestionBBCComponent } from './components/question-b-b-c/question-b-b-c.component';
+import { QuestionCAComponent } from './components/question-c-a/question-c-a.component';
+import { QuestionCBComponent } from './components/question-c-b/question-c-b.component';
+import { QuestionCCComponent } from './components/question-c-c/question-c-c.component';
 
 
 
@@ -61,7 +64,10 @@ import { QuestionBBCComponent } from './components/question-b-b-c/question-b-b-c
     QuestionBADComponent,
     QuestionBBAComponent,
     QuestionBBBComponent,
-    QuestionBBCComponent
+    QuestionBBCComponent,
+    QuestionCAComponent,
+    QuestionCBComponent,
+    QuestionCCComponent
 
 
   ],
