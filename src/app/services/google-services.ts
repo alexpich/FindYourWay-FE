@@ -4,5 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
+
 @Injectable()
-export class GoogleServices{}
+export class GoogleServices { }
