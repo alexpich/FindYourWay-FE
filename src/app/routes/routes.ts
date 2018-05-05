@@ -18,6 +18,9 @@ import { QuestionBBBComponent } from '../components/question-b-b-b/question-b-b-
 import { QuestionBACComponent } from '../components/question-b-a-c/question-b-a-c.component';
 import { QuestionBBCComponent } from '../components/question-b-b-c/question-b-b-c.component';
 import { QuestionBADComponent } from '../components/question-b-a-d/question-b-a-d.component';
+import { QuestionCAComponent } from '../components/question-c-a/question-c-a.component';
+import { QuestionCBComponent } from '../components/question-c-b/question-c-b.component';
+import { QuestionCCComponent } from '../components/question-c-c/question-c-c.component';
 
 
 export const routes: Routes = [
@@ -93,6 +96,17 @@ export const routes: Routes = [
     {
         path: 'question-c',
         component: QuestionsCComponent
-
+    },
+    {
+        path: 'question-c-a',
+        component: QuestionCAComponent
+    },
+    {
+        path: 'question-c-b',
+        component: QuestionCBComponent
+    },
+    {
+        path: 'question-c-c',
+        component: QuestionCCComponent
     }
 ];
