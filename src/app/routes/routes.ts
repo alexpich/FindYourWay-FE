@@ -21,6 +21,9 @@ import { QuestionBADComponent } from '../components/question-b-a-d/question-b-a-
 import { QuestionCAComponent } from '../components/question-c-a/question-c-a.component';
 import { QuestionCBComponent } from '../components/question-c-b/question-c-b.component';
 import { QuestionCCComponent } from '../components/question-c-c/question-c-c.component';
+import { QuestionAAComponent } from '../components/question-a-a/question-a-a.component';
+import { QuestionABComponent } from '../components/question-a-b/question-a-b.component';
+import { QuestionACComponent } from '../components/question-a-c/question-a-c.component';
 
 
 export const routes: Routes = [
@@ -52,6 +55,18 @@ export const routes: Routes = [
     {
         path: 'questions-a',
         component: QuestionsAComponent
+    },
+    {
+        path: 'question-a-a',
+        component: QuestionAAComponent
+    },
+    {
+        path: 'question-a-b',
+        component: QuestionABComponent
+    },
+    {
+        path: 'question-a-c',
+        component: QuestionACComponent
     },
     {
         path: 'question-b',
