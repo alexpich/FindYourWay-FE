@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-questions-a',
   templateUrl: './questions-a.component.html',
@@ -7,12 +7,9 @@ import {Location} from '@angular/common';
 })
 export class QuestionsAComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  goBack() {
-    this.location.back();
-  }
 }

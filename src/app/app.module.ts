@@ -22,9 +22,19 @@ import { GetStartedComponent } from './components/get-started/get-started.compon
 import { QuestionsAComponent } from './components/questions-a/questions-a.component';
 import { QuestionBComponent } from './components/question-b/question-b.component';
 import { QuestionsCComponent } from './components/question-c/question-c.component';
-import { QuestionAAComponent } from './components/question-a-a/question-a-a.component';
-import { QuestionABComponent } from './components/question-a-b/question-a-b.component';
-import { QuestionACComponent } from './components/question-a-c/question-a-c.component';
+import { QuestionBAComponent } from './components/question-b-a/question-b-a.component';
+import { QuestionBBComponent } from './components/question-b-b/question-b-b.component';
+import { QuestionBAAComponent } from './components/question-b-a-a/question-b-a-a.component';
+import { QuestionBABComponent } from './components/question-b-a-b/question-b-a-b.component';
+import { QuestionBACComponent } from './components/question-b-a-c/question-b-a-c.component';
+import { QuestionBADComponent } from './components/question-b-a-d/question-b-a-d.component';
+import { QuestionBBAComponent } from './components/question-b-b-a/question-b-b-a.component';
+import { QuestionBBBComponent } from './components/question-b-b-b/question-b-b-b.component';
+import { QuestionBBCComponent } from './components/question-b-b-c/question-b-b-c.component';
+
+
+
+
 
 
 @NgModule({
@@ -43,9 +53,15 @@ import { QuestionACComponent } from './components/question-a-c/question-a-c.comp
     QuestionsAComponent,
     QuestionBComponent,
     QuestionsCComponent,
-    QuestionAAComponent,
-    QuestionABComponent,
-    QuestionACComponent
+    QuestionBAComponent,
+    QuestionBBComponent,
+    QuestionBAAComponent,
+    QuestionBABComponent,
+    QuestionBACComponent,
+    QuestionBADComponent,
+    QuestionBBAComponent,
+    QuestionBBBComponent,
+    QuestionBBCComponent
 
 
   ],
