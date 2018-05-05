@@ -20,6 +20,9 @@ import { QuestionsComponent } from './components/questions/questions.component';
 import { GetStartedComponent } from './components/get-started/get-started.component';
 
 import { QuestionsAComponent } from './components/questions-a/questions-a.component';
+import { QuestionAAComponent } from './components/question-a-a/question-a-a.component';
+import { QuestionABComponent } from './components/question-a-b/question-a-b.component';
+import { QuestionACComponent } from './components/question-a-c/question-a-c.component';
 import { QuestionBComponent } from './components/question-b/question-b.component';
 import { QuestionsCComponent } from './components/question-c/question-c.component';
 import { QuestionBAComponent } from './components/question-b-a/question-b-a.component';
@@ -54,6 +57,9 @@ import { QuestionCCComponent } from './components/question-c-c/question-c-c.comp
 
     GetStartedComponent,
     QuestionsAComponent,
+    QuestionAAComponent,
+    QuestionABComponent,
+    QuestionACComponent,
     QuestionBComponent,
     QuestionsCComponent,
     QuestionBAComponent,
