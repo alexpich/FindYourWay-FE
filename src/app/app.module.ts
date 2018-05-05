@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 // Components
 import { AppComponent } from './app.component';
@@ -16,9 +18,9 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 
 // Routes
 import {routes} from './routes/routes';
+
 import { QuestionsComponent } from './components/questions/questions.component';
 import { GetStartedComponent } from './components/get-started/get-started.component';
-
 import { QuestionsAComponent } from './components/questions-a/questions-a.component';
 import { QuestionAAComponent } from './components/question-a-a/question-a-a.component';
 import { QuestionABComponent } from './components/question-a-b/question-a-b.component';
@@ -79,6 +81,8 @@ import { QuestionCCComponent } from './components/question-c-c/question-c-c.comp
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),
     NgbModule.forRoot()
   ],
