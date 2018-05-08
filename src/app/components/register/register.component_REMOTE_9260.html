@@ -1,0 +1,22 @@
+<form>
+  First Name:<br>
+  <input type = "text" name = "firstname" [(ngModel)]= "regUser.firstname">
+  <br>
+  Last Name:<br>
+  <input type = "text" name = "lastname"[(ngModel)]= "regUser.lastname">
+  <br>
+  E-mail:<br>
+  <input type = "text" name = "email" [(ngModel)]= "regUser.email">
+  <br>
+  Username:<br>
+  <input type = "text" name = "username" [(ngModel)]= "regUser.username">
+  <br>
+  Password:<br>
+  <input type = "password" name = "password" [(ngModel)]= "regUser.password">
+  <br>
+  Location:<br>
+  <input type = "text" name = "address" value = "{{this.currentLat|number:'.3'}}, {{this.currentLong|number:'.3'}}" disabled >
+  <button type = "button" (click)="locator()"><img src="https://image.flaticon.com/icons/svg/35/35247.svg" height = "20" width = "20"></button>
+  <br><br>
+<button type = "submit" (click)="submit()" >Register</button>
+</form>

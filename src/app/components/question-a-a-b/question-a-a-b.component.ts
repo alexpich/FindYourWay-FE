@@ -5,20 +5,18 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
 @Component({
-  selector: 'app-question-c-c',
-  templateUrl: './question-c-c.component.html',
-  styleUrls: ['./question-c-c.component.css']
+  selector: 'app-question-a-a-b',
+  templateUrl: './question-a-a-b.component.html',
+  styleUrls: ['./question-a-a-b.component.css']
 })
-export class QuestionCCComponent implements OnInit {
-
+export class QuestionAABComponent implements OnInit {
 
   private apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
   private location = '28.060,-82.405';
   private radius = 'radius=15000';
-  private type = 'type=night_club';
-  private keyword = 'keyword=music';
+  private type = 'type=establishment';
+  private keyword = 'keyword=theatre';
   private apiKey = 'key=AIzaSyAJafx3cfY7TzODG-y-OW3fY4XOiugFqmA';
 
   private wholeURL = this.apiURL + this.location + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
