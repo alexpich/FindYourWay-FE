@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { getLocaleDateFormat } from '@angular/common';
@@ -5,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { } from '@types/googlemaps';
+
 
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
@@ -21,7 +23,6 @@ const HTTP_OPTIONS = {
 export class QuestionBBAComponent implements OnInit {
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
-
 
   private apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
   private locations = '28.060,-82.405';
@@ -46,21 +47,9 @@ export class QuestionBBAComponent implements OnInit {
     };
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
 
-
-  }
-
-  getData() {
-    return this.http.get(this.wholeURL)
-      .map((res: Response) => res.json());
-  }
-
-  getPlaces() {
-    this.getData().subscribe(data => {
-      console.log(data);
-      this.data = data;
-      console.log(this.data.results[0].geometry.location);
-      this.getUserMarker();
-      this.getAllMarkers();
+    const contentString = 'hi';
+    const infowindow = new google.maps.InfoWindow({
+      content: contentString
     });
   }
 
@@ -73,7 +62,6 @@ export class QuestionBBAComponent implements OnInit {
   }
 
   getAllMarkers() {
-    // console.log (this.data.results.length);
     for (let i = 0; i < this.data.results.length; i++) {
       const populatedLocation = this.data.results[i].geometry.location;
       const marker2 = new google.maps.Marker({
@@ -83,5 +71,15 @@ export class QuestionBBAComponent implements OnInit {
       });
     }
   }
+
+  // getInfoWindow() {
+  //   const contentString = 'test';
+  //   for (let i = 0; i < this.data.results.length; i++) {
+  //     const infowindow = new google.maps.InfoWindow({
+  //       content: contentString
+  //     });
+  //   }
+  // }
+
 
 }

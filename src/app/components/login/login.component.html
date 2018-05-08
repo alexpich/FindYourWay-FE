@@ -2,23 +2,26 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
-      <form>
+      <form >
         Username:
         <br>
         <div class="form-group">
-          <input class="form-control" type="text" name="username" pattern = ".{2,15}" title="Username needs to be between 2 - 15 characters">
+          <input class="form-control" type="text" name="username" [(ngModel)]= "credential.username" pattern = ".{2,15}" title="Username needs to be between 2 - 15 characters">
         </div>
         <br>
         <br> Password:
         <br>
         <div class="form-group">
-          <input class="form-control" type="password" name="password" pattern = ".{8,16}" title="Password needs to be between 2 - 16 characters">
+          <input class="form-control" type="password" name="password"  [(ngModel)]="credential.password" pattern = ".{8,16}" title="Password needs to be between 2 - 16 characters">
         </div>
         <br>
         <br>
-        <button class="btn btn-primary" type="submit">Submit!</button>
+        <button class="btn btn-primary" type="button" (click) = "submit()">Login!</button>
         <div class="col-sm-3"></div>
       </form>
+      <p class="alert-message" *ngIf="alert">
+        {{alert}}
+      </p>
     </div>
   </div>
 </div>

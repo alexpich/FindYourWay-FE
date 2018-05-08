@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-question-c-b',
   templateUrl: './question-c-b.component.html',
@@ -41,4 +42,5 @@ export class QuestionCBComponent implements OnInit {
       this.data = data;
     });
   }
+
 }
