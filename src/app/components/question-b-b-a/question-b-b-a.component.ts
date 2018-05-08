@@ -25,23 +25,28 @@ export class QuestionBBAComponent implements OnInit {
   map: google.maps.Map;
 
   private apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
-  private locations = '28.060,-82.405';
+  private userLocation = JSON.parse(localStorage.getItem('credential')).location;
+  private userLat = this.userLocation.slice(0, 9);
+  private userLng = this.userLocation.slice(10, 19);
   private radius = 'radius=15000';
   private type = 'type=restaurants';
   private keyword = 'keyword=seafood';
   private apiKey = 'key=AIzaSyAJafx3cfY7TzODG-y-OW3fY4XOiugFqmA';
 
-  private wholeURL = this.apiURL + this.locations + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
+  private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
   data: any = {};
 
   constructor(private http: Http) {
     this.getPlaces();
     this.getData();
+    console.log(this.userLocation);
+    console.log(this.userLat);
+    console.log(this.userLng);
   }
 
   ngOnInit() {
     const mapProp = {
-      center: new google.maps.LatLng(28.060, -82.405),
+      center: new google.maps.LatLng(Number(this.userLat), Number(this.userLng)),
       zoom: 11,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -62,7 +67,6 @@ export class QuestionBBAComponent implements OnInit {
     this.getData().subscribe(data => {
       console.log(data);
       this.data = data;
-      console.log(this.data.results[0].geometry.location);
       this.getUserMarker();
       this.getAllMarkers();
     });
@@ -70,7 +74,7 @@ export class QuestionBBAComponent implements OnInit {
 
   getUserMarker() {
     const marker = new google.maps.Marker({
-      position: { lat: 28.060, lng: -82.405 },
+      position: { lat: Number(this.userLat), lng: Number(this.userLng) },
       map: this.map,
       title: 'Your location'
     });
@@ -80,12 +84,14 @@ export class QuestionBBAComponent implements OnInit {
     for (let i = 0; i < this.data.results.length; i++) {
       const populatedLocation = this.data.results[i].geometry.location;
       const marker2 = new google.maps.Marker({
+        animation: google.maps.Animation.DROP,
         position: populatedLocation,
         map: this.map,
         title: this.data.results[i].name
       });
     }
   }
+
 
   // getInfoWindow() {
   //   const contentString = 'test';
