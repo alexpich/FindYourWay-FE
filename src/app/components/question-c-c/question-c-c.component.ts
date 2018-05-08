@@ -43,4 +43,4 @@ export class QuestionCCComponent implements OnInit {
       this.data = data;
     });
   }
-
+}
