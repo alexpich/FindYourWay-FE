@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { User } from '../../models/user';
-import { UserService} from '../../services/user-services';
+import { UserService } from '../../services/user-services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -37,6 +37,7 @@ export class RegisterComponent implements OnInit {
   }
 
   success(position) {
+
       this.currentLat = position.coords.latitude;
       this.currentLong = position.coords.longitude;
 
@@ -49,14 +50,16 @@ export class RegisterComponent implements OnInit {
     this.regUser.roleId = Number(role.value) ;
     this.clocation = this.currentLat + ',' + this.currentLong;
     this.regUser.location = this.clocation;
+
     this.regUser.points = '0';
+
     this.userservice.createUser(this.regUser).subscribe(users => {
-        if (users === null) {
-          this.alert = 'Could not complete registration';
-        } else {
-          this.alert = 'Registration is complete';
-        }
-      });
+      if (users === null) {
+        this.alert = 'Could not complete registration';
+      } else {
+        this.alert = 'Registration is complete';
+      }
+    });
 
   }
 }

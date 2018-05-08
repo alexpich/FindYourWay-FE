@@ -24,7 +24,6 @@ export class QuestionBBAComponent implements OnInit {
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
 
-
   private apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
   private locations = '28.060,-82.405';
   private radius = 'radius=15000';
@@ -48,7 +47,10 @@ export class QuestionBBAComponent implements OnInit {
     };
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
 
-
+    const contentString = 'hi';
+    const infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
   }
 
   getUserMarker() {
@@ -60,7 +62,6 @@ export class QuestionBBAComponent implements OnInit {
   }
 
   getAllMarkers() {
-    // console.log (this.data.results.length);
     for (let i = 0; i < this.data.results.length; i++) {
       const populatedLocation = this.data.results[i].geometry.location;
       const marker2 = new google.maps.Marker({
@@ -71,16 +72,14 @@ export class QuestionBBAComponent implements OnInit {
     }
   }
 
-  getData() {
-    return this.http.get(this.wholeURL)
-      .map((res: Response) => res.json());
-  }
+  // getInfoWindow() {
+  //   const contentString = 'test';
+  //   for (let i = 0; i < this.data.results.length; i++) {
+  //     const infowindow = new google.maps.InfoWindow({
+  //       content: contentString
+  //     });
+  //   }
+  // }
 
-  getPlaces() {
-    this.getData().subscribe(data => {
-      console.log(data);
-      this.data = data;
-    });
-  }
 
 }
