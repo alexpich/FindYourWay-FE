@@ -87,19 +87,6 @@ export class QuestionBBAComponent implements OnInit {
     }
   }
 
-
-  getData() {
-    return this.http.get(this.wholeURL)
-      .map((res: Response) => res.json());
-  }
-
-  getPlaces() {
-    this.getData().subscribe(data => {
-      console.log(data);
-      this.data = data;
-    });
-  }
-
   // getInfoWindow() {
   //   const contentString = 'test';
   //   for (let i = 0; i < this.data.results.length; i++) {
