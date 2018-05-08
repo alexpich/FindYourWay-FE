@@ -26,7 +26,6 @@ export class CarouselComponent implements OnInit {
     }
 
     nextImage() {
-      console.log(this.counter);
       if (this.counter < 2) {
       this.counter++;
       } else {
