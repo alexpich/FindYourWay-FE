@@ -1,3 +1,10 @@
-<p>
-  question-c-a works!
-</p>
+<p>dance options</p>
+
+<div>
+  <ng-container *ngFor="let p of data.results">
+    <p>{{p.name}}</p>
+    <p>{{p.vicinity}}</p>
+    <p>{{p.rating}}</p>
+    <hr>
+  </ng-container>
+</div>

@@ -22,8 +22,16 @@ import { QuestionCAComponent } from '../components/question-c-a/question-c-a.com
 import { QuestionCBComponent } from '../components/question-c-b/question-c-b.component';
 import { QuestionCCComponent } from '../components/question-c-c/question-c-c.component';
 import { QuestionAAComponent } from '../components/question-a-a/question-a-a.component';
+import { QuestionAAAComponent } from '../components/question-a-a-a/question-a-a-a.component';
+import { QuestionAABComponent } from '../components/question-a-a-b/question-a-a-b.component';
 import { QuestionABComponent } from '../components/question-a-b/question-a-b.component';
+import { QuestionABAComponent } from '../components/question-a-b-a/question-a-b-a.component';
+import { QuestionABBComponent } from '../components/question-a-b-b/question-a-b-b.component';
+import { QuestionABCComponent } from '../components/question-a-b-c/question-a-b-c.component';
 import { QuestionACComponent } from '../components/question-a-c/question-a-c.component';
+import { QuestionACAComponent } from '../components/question-a-c-a/question-a-c-a.component';
+import { QuestionACBComponent } from '../components/question-a-c-b/question-a-c-b.component';
+import { QuestionACCComponent } from '../components/question-a-c-c/question-a-c-c.component';
 
 
 export const routes: Routes = [
@@ -61,12 +69,44 @@ export const routes: Routes = [
         component: QuestionAAComponent
     },
     {
+        path: 'question-a-a-a',
+        component: QuestionAAAComponent
+    },
+    {
+        path: 'question-a-a-b',
+        component: QuestionAABComponent
+    },
+    {
         path: 'question-a-b',
         component: QuestionABComponent
     },
     {
+        path: 'question-a-b-a',
+        component: QuestionABAComponent
+    },
+    {
+        path: 'question-a-b-b',
+        component: QuestionABBComponent
+    },
+    {
+        path: 'question-a-b-c',
+        component: QuestionABCComponent
+    },
+    {
         path: 'question-a-c',
         component: QuestionACComponent
+    },
+    {
+        path: 'question-a-c-a',
+        component: QuestionACAComponent
+    },
+    {
+        path: 'question-a-c-b',
+        component: QuestionACBComponent
+    },
+    {
+        path: 'question-a-c-c',
+        component: QuestionACCComponent
     },
     {
         path: 'question-b',
