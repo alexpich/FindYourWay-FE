@@ -50,6 +50,10 @@ import { QuestionABCComponent } from './components/question-a-b-c/question-a-b-c
 import { QuestionACAComponent } from './components/question-a-c-a/question-a-c-a.component';
 import { QuestionACBComponent } from './components/question-a-c-b/question-a-c-b.component';
 import { QuestionACCComponent } from './components/question-a-c-c/question-a-c-c.component';
+import { FormsModule } from '@angular/forms';
+import { UserService } from './services/user-services';
+import { GoogleService } from './services/google-services';
+import { UpdateuserComponent } from './components/updateuser/updateuser.component';
 
 
 
@@ -68,7 +72,7 @@ import { QuestionACCComponent } from './components/question-a-c-c/question-a-c-c
     HelpComponent,
     CarouselComponent,
     QuestionsComponent,
-
+    UpdateuserComponent,
     GetStartedComponent,
     QuestionsAComponent,
     QuestionAAComponent,
@@ -108,9 +112,11 @@ import { QuestionACCComponent } from './components/question-a-c-c/question-a-c-c
     HttpModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    FormsModule
   ],
-  providers: [],
+  providers: [UserService,
+    GoogleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

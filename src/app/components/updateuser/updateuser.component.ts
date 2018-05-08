@@ -20,7 +20,8 @@ export class UpdateuserComponent implements OnInit {
   }
 
   submit() {
-
+    console.log(this.currUser);
+    this.updateUser = this.currUser;
     this.userservice.updatesUser(this.updateUser).subscribe(users => {
         if (users === null) {
           this.alert = 'Could not update';
