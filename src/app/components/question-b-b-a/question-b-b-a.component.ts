@@ -48,5 +48,4 @@ export class QuestionBBAComponent implements OnInit {
       this.data = data;
     });
   }
-
 }
