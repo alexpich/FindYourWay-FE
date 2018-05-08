@@ -41,12 +41,12 @@ export class QuestionBBAComponent implements OnInit {
   ngOnInit() {
     const mapProp = {
       center: new google.maps.LatLng(28.060, -82.405),
-      zoom: 15,
+      zoom: 11,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
 
-    this.getMarkers();
+
   }
 
   getData() {
@@ -59,15 +59,27 @@ export class QuestionBBAComponent implements OnInit {
       console.log(data);
       this.data = data;
       console.log(this.data.results[0].geometry.location);
+      this.getUserMarker();
+      this.getAllMarkers();
     });
   }
 
-  getMarkers() {
-    for (let i = 0; i < 5; i++) {
-      // const populatedLocation = this.data.results[i].geometry.location;
-      const marker = new google.maps.Marker({
-        position: { lat: 28.060, lng: -82.405 },
-        map: this.map
+  getUserMarker() {
+    const marker = new google.maps.Marker({
+      position: { lat: 28.060, lng: -82.405 },
+      map: this.map,
+      title: 'Your location'
+    });
+  }
+
+  getAllMarkers() {
+    // console.log (this.data.results.length);
+    for (let i = 0; i < this.data.results.length; i++) {
+      const populatedLocation = this.data.results[i].geometry.location;
+      const marker2 = new google.maps.Marker({
+        position: populatedLocation,
+        map: this.map,
+        title: this.data.results[i].name
       });
     }
   }
