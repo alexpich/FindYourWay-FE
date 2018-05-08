@@ -53,6 +53,21 @@ export class QuestionBBAComponent implements OnInit {
     });
   }
 
+  getData() {
+    return this.http.get(this.wholeURL)
+      .map((res: Response) => res.json());
+  }
+
+  getPlaces() {
+    this.getData().subscribe(data => {
+      console.log(data);
+      this.data = data;
+      console.log(this.data.results[0].geometry.location);
+      this.getUserMarker();
+      this.getAllMarkers();
+    });
+  }
+
   getUserMarker() {
     const marker = new google.maps.Marker({
       position: { lat: 28.060, lng: -82.405 },
