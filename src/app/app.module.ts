@@ -53,6 +53,7 @@ import { QuestionACCComponent } from './components/question-a-c-c/question-a-c-c
 import { FormsModule } from '@angular/forms';
 import { UserService } from './services/user-services';
 import { GoogleService } from './services/google-services';
+import { UpdateuserComponent } from './components/updateuser/updateuser.component';
 
 
 
@@ -71,7 +72,7 @@ import { GoogleService } from './services/google-services';
     HelpComponent,
     CarouselComponent,
     QuestionsComponent,
-
+    UpdateuserComponent,
     GetStartedComponent,
     QuestionsAComponent,
     QuestionAAComponent,

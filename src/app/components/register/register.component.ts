@@ -44,6 +44,9 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
+    const role = document.getElementById('role') as HTMLInputElement;
+
+    this.regUser.roleId = Number(role.value) ;
     this.clocation = this.currentLat + ',' + this.currentLong;
     this.regUser.location = this.clocation;
     this.regUser.points = '0';
