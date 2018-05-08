@@ -24,6 +24,7 @@ import { QuestionCCComponent } from '../components/question-c-c/question-c-c.com
 import { QuestionAAComponent } from '../components/question-a-a/question-a-a.component';
 import { QuestionABComponent } from '../components/question-a-b/question-a-b.component';
 import { QuestionACComponent } from '../components/question-a-c/question-a-c.component';
+import { FavoriteComponent } from '../components/favorite/favorite.component';
 
 
 export const routes: Routes = [
@@ -123,5 +124,9 @@ export const routes: Routes = [
     {
         path: 'question-c-c',
         component: QuestionCCComponent
+    },
+    {
+        path: 'favorite',
+        component: FavoriteComponent
     }
 ];

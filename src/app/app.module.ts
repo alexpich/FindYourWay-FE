@@ -39,6 +39,7 @@ import { QuestionBBCComponent } from './components/question-b-b-c/question-b-b-c
 import { QuestionCAComponent } from './components/question-c-a/question-c-a.component';
 import { QuestionCBComponent } from './components/question-c-b/question-c-b.component';
 import { QuestionCCComponent } from './components/question-c-c/question-c-c.component';
+import { FavoriteComponent } from './components/favorite/favorite.component';
 
 
 
@@ -75,7 +76,8 @@ import { QuestionCCComponent } from './components/question-c-c/question-c-c.comp
     QuestionBBCComponent,
     QuestionCAComponent,
     QuestionCBComponent,
-    QuestionCCComponent
+    QuestionCCComponent,
+    FavoriteComponent,
 
 
   ],
