@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
         this.success(position);
       });
     } else {
-      alert("Geolocation is not supported by this browser.");
+      alert('Geolocation is not supported by this browser.');
     }
 
   }
