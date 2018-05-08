@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
   <div class="row">
     <div class="col-sm-3"></div>
@@ -17,7 +18,7 @@
         <input class="form-control" type="text" name="username" pattern = ".{2,15}" title="Username needs to be between 2 - 15 characters">
         <br> Password:
         <br>
-        <input class="form-control" type="password" name="password" pattern = ".{8,16}" title="Password needs to be between 2 - 16 characters">
+        <input class="form-control" type="password" name="password" pattern = ".{8,16}" title="Password needs to be between 2 - 15 characters">
         <br> Location:
         <br>
         <input type="text" name="address" value="{{this.currentLat|number:'.3'}}, {{this.currentLong|number:'.3'}}" disabled>
@@ -32,3 +33,27 @@
     <div class="col-sm-3"></div>
   </div>
 </div>
+=======
+<form>
+  First Name:<br>
+  <input type = "text" name = "firstname" [(ngModel)]= "regUser.firstname">
+  <br>
+  Last Name:<br>
+  <input type = "text" name = "lastname"[(ngModel)]= "regUser.lastname">
+  <br>
+  E-mail:<br>
+  <input type = "text" name = "email" [(ngModel)]= "regUser.email">
+  <br>
+  Username:<br>
+  <input type = "text" name = "username" [(ngModel)]= "regUser.username">
+  <br>
+  Password:<br>
+  <input type = "password" name = "password" [(ngModel)]= "regUser.password">
+  <br>
+  Location:<br>
+  <input type = "text" name = "address" value = "{{this.currentLat|number:'.3'}}, {{this.currentLong|number:'.3'}}" disabled >
+  <button type = "button" (click)="locator()"><img src="https://image.flaticon.com/icons/svg/35/35247.svg" height = "20" width = "20"></button>
+  <br><br>
+<button type = "submit" (click)="submit()" >Register</button>
+</form>
+>>>>>>> 9f439a0edcb617a694d5ec1738cec5281f1db3ba
