@@ -39,6 +39,9 @@ import { QuestionBBCComponent } from './components/question-b-b-c/question-b-b-c
 import { QuestionCAComponent } from './components/question-c-a/question-c-a.component';
 import { QuestionCBComponent } from './components/question-c-b/question-c-b.component';
 import { QuestionCCComponent } from './components/question-c-c/question-c-c.component';
+
+import { FavoriteComponent } from './components/favorite/favorite.component';
+
 import { QuestionAAAComponent } from './components/question-a-a-a/question-a-a-a.component';
 import { QuestionAABComponent } from './components/question-a-a-b/question-a-a-b.component';
 import { QuestionABAComponent } from './components/question-a-b-a/question-a-b-a.component';
@@ -47,6 +50,7 @@ import { QuestionABCComponent } from './components/question-a-b-c/question-a-b-c
 import { QuestionACAComponent } from './components/question-a-c-a/question-a-c-a.component';
 import { QuestionACBComponent } from './components/question-a-c-b/question-a-c-b.component';
 import { QuestionACCComponent } from './components/question-a-c-c/question-a-c-c.component';
+
 
 
 
@@ -84,6 +88,9 @@ import { QuestionACCComponent } from './components/question-a-c-c/question-a-c-c
     QuestionCAComponent,
     QuestionCBComponent,
     QuestionCCComponent,
+
+    FavoriteComponent,
+
     QuestionAAAComponent,
     QuestionAABComponent,
     QuestionABAComponent,
@@ -92,6 +99,7 @@ import { QuestionACCComponent } from './components/question-a-c-c/question-a-c-c
     QuestionACAComponent,
     QuestionACBComponent,
     QuestionACCComponent
+
 
 
   ],

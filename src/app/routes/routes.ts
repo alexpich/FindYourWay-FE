@@ -29,9 +29,13 @@ import { QuestionABAComponent } from '../components/question-a-b-a/question-a-b-
 import { QuestionABBComponent } from '../components/question-a-b-b/question-a-b-b.component';
 import { QuestionABCComponent } from '../components/question-a-b-c/question-a-b-c.component';
 import { QuestionACComponent } from '../components/question-a-c/question-a-c.component';
+
+import { FavoriteComponent } from '../components/favorite/favorite.component';
+
 import { QuestionACAComponent } from '../components/question-a-c-a/question-a-c-a.component';
 import { QuestionACBComponent } from '../components/question-a-c-b/question-a-c-b.component';
 import { QuestionACCComponent } from '../components/question-a-c-c/question-a-c-c.component';
+
 
 
 export const routes: Routes = [
@@ -163,5 +167,9 @@ export const routes: Routes = [
     {
         path: 'question-c-c',
         component: QuestionCCComponent
+    },
+    {
+        path: 'favorite',
+        component: FavoriteComponent
     }
 ];

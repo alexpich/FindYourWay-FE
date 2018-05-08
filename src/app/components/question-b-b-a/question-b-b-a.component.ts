@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { getLocaleDateFormat } from '@angular/common';
@@ -5,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { } from '@types/googlemaps';
+
 
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
@@ -85,6 +87,19 @@ export class QuestionBBAComponent implements OnInit {
     }
   }
 
+
+  getData() {
+    return this.http.get(this.wholeURL)
+      .map((res: Response) => res.json());
+  }
+
+  getPlaces() {
+    this.getData().subscribe(data => {
+      console.log(data);
+      this.data = data;
+    });
+  }
+
   // getInfoWindow() {
   //   const contentString = 'test';
   //   for (let i = 0; i < this.data.results.length; i++) {
@@ -93,5 +108,6 @@ export class QuestionBBAComponent implements OnInit {
   //     });
   //   }
   // }
+
 
 }

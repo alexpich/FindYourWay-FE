@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-question-c-a',
   templateUrl: './question-c-a.component.html',
@@ -29,7 +30,6 @@ export class QuestionCAComponent implements OnInit {
 
   ngOnInit() {
   }
-
   getData() {
     return this.http.get(this.wholeURL)
       .map((res: Response) => res.json());
