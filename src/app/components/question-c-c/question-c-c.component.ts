@@ -5,12 +5,14 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-question-c-c',
   templateUrl: './question-c-c.component.html',
   styleUrls: ['./question-c-c.component.css']
 })
 export class QuestionCCComponent implements OnInit {
+
 
   private apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
   private location = '28.060,-82.405';
@@ -41,4 +43,4 @@ export class QuestionCCComponent implements OnInit {
       this.data = data;
     });
   }
-}
+
