@@ -26,7 +26,7 @@ export class UserService {
         console.log(`Attempting to login user: ${user.username}`);
         const json = JSON.stringify(user);
         console.log(json);
-        return this.http.post<User>(API_URL + 'login', json, HTTP_OPTIONS);
+        return this.http.post<User>(API_URL + 'users/login', json, HTTP_OPTIONS);
       }
 
       isLoggedIn() {
@@ -45,6 +45,7 @@ export class UserService {
       public createUser(user: User) {
         console.log(`Creating a user  ${user.username}`);
         const json = JSON.stringify(user);
-        return this.http.post<User>(API_URL + 'register', json, HTTP_OPTIONS);
+        console.log(json);
+        return this.http.post<User>(API_URL + 'users', json, HTTP_OPTIONS);
       }
 }
