@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8082/Project_1/',
+  apiUrl: 'http://findyourway-env.7cxshhunvk.us-east-1.elasticbeanstalk.com/',
+  apiUrl2: ''
 };

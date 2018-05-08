@@ -13,9 +13,11 @@ export class RegisterComponent implements OnInit {
 
   currentLat: String;
   currentLong: String;
+
   regUser = new User();
   alert = '';
   clocation: string;
+
 
   constructor(private userservice: UserService, private router: Router) { }
 
@@ -23,6 +25,23 @@ export class RegisterComponent implements OnInit {
   }
 
   locator() {
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.success(position);
+      });
+    } else {
+      alert('Geolocation is not supported by this browser.');
+    }
+
+  }
+
+  success(position) {
+    this.currentLat = position.coords.latitude;
+    this.currentLong = position.coords.longitude;
+
+    console.log(this.currentLat + ', ' + this.currentLong);
+
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
           this.success(position);
@@ -50,5 +69,6 @@ export class RegisterComponent implements OnInit {
           this.alert = 'Registration is complete';
         }
       });
+
   }
 }
