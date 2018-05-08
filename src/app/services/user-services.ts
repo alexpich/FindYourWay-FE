@@ -47,6 +47,6 @@ export class UserService {
         console.log(`Creating a user  ${user.username}`);
         const json = JSON.stringify(user);
         console.log(json);
-        return this.http.post<User>(API_URL + 'users/', json, HTTP_OPTIONS);
+        return this.http.post<User>(API_URL + 'users', json, HTTP_OPTIONS);
       }
 }
