@@ -34,7 +34,6 @@ export class CarouselComponent implements OnInit {
     //   }
 
     //   this.image.src = this.images[this.counter];
-
   }
 
 }
