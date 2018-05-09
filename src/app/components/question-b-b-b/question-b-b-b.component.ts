@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { getLocaleDateFormat } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { } from '@types/googlemaps';
 
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
@@ -17,6 +19,9 @@ const HTTP_OPTIONS = {
   styleUrls: ['./question-b-b-b.component.css']
 })
 export class QuestionBBBComponent implements OnInit {
+
+  @ViewChild('gmap') gmapElement: any;
+  map: google.maps.Map;
 
   private apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
   private location = '28.060,-82.405';
@@ -34,6 +39,12 @@ export class QuestionBBBComponent implements OnInit {
   }
 
   ngOnInit() {
+    const mapProp = {
+      center: new google.maps.LatLng(28.060, -82.405),
+      zoom: 11,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
   }
 
   getData() {
@@ -45,7 +56,42 @@ export class QuestionBBBComponent implements OnInit {
     this.getData().subscribe(data => {
       console.log(data);
       this.data = data;
+      console.log(this.data.results[0].geometry.location);
+      this.getUserMarker();
+      this.getAllMarkers();
     });
   }
-
+  getUserMarker() {
+    const marker = new google.maps.Marker({
+      position: { lat: 28.060, lng: -82.405 },
+      map: this.map,
+      title: 'Your location'
+    });
+  }
+  getAllMarkers() {
+    for (let i = 0; i < this.data.results.length; i++) {
+      const populatedLocation = this.data.results[i].geometry.location;
+      const photo = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=
+                      ${this.data.results[i].photos[0].photo_reference}&${this.apiKey}`;
+      const rate = this.data.results[i].rating;
+      const address =  this.data.results[i].vicinity;
+      const marker2 = new google.maps.Marker({
+        position: populatedLocation,
+        map: this.map,
+        title: this.data.results[i].name,
+        icon: this.data.results[i].icon
+      });
+      const contentString = `<img src = "${photo}" width="100" height="100">
+                              <h1>${marker2.getTitle()}</h1>
+                              <h2>Rating: ${rate}</h2>
+                              <h3>Address: ${address}</h3>`;
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      marker2.addListener('click', function () {
+        // alert('Simple Component\'s function...' + marker2.getTitle());
+        infowindow.open(this.map, marker2);
+      });
+    }
+  }
 }

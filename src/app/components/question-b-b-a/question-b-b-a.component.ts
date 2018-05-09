@@ -18,12 +18,26 @@ export class QuestionBBAComponent implements OnInit {
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
 
+  // list of items
+  private apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
   private userLocation = JSON.parse(localStorage.getItem('credential')).location;
   private userLat = this.userLocation.slice(0, 9);
   private userLng = this.userLocation.slice(10, 19);
-  private radius = '15000';
-  private type = 'restaurants';
-  private keyword = 'seafood';
+  private radius = 'radius=15000';
+  private type = 'type=restaurants';
+  private keyword = 'keyword=seafood';
+  private apiKey = 'key=AIzaSyAJafx3cfY7TzODG-y-OW3fY4XOiugFqmA';
+
+  // photos
+  // private photoUrl = 'https://maps.googleapis.com/maps/api/place/photo?';
+  // private photoWidth = 'maxwidth=100';
+  // private photoReference = '';
+  // private wholePhotoURL = this.photoUrl + this.photoWidth + '&' + this.photoReference;
+
+
+
+  private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
+
   data: any = {};
 
   constructor(private http: Http, private google: GoogleService) {
@@ -45,10 +59,20 @@ export class QuestionBBAComponent implements OnInit {
     this.google.pQuery(this.userLocation, this.radius, this.type, this.keyword).subscribe(data => {
       console.log(data);
       this.data = data;
-      console.log (this.data);
-      this.google.getUserMarker(this.map);
-      this.google.getAllMarkers(this.data, this.map);
+      // console.log(data.results.photos[0].photoreference);
+      this.getUserMarker();
+      this.getAllMarkers();
     });
+  }
+
+  getUserMarker() {
+    const marker = new google.maps.Marker({
+      position: { lat: Number(this.userLat), lng: Number(this.userLng) },
+      map: this.map,
+      title: 'Your location'
+
+    });
+    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
   }
 
   // getUserMarker() {
