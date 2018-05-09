@@ -1,5 +1,6 @@
 <p>vegetarian options</p>
 
+<div #gmap style="width: 100%; height: 400px"></div>
 <div>
   <ng-container *ngFor="let p of data.results">
     <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference={{p.photos[0].photo_reference}}&key=AIzaSyAJafx3cfY7TzODG-y-OW3fY4XOiugFqmA">
