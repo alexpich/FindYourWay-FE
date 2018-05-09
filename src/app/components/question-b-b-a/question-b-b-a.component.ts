@@ -24,6 +24,7 @@ export class QuestionBBAComponent implements OnInit {
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
 
+  // list of items
   private apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
   private userLocation = JSON.parse(localStorage.getItem('credential')).location;
   private userLat = this.userLocation.slice(0, 9);
@@ -32,6 +33,14 @@ export class QuestionBBAComponent implements OnInit {
   private type = 'type=restaurants';
   private keyword = 'keyword=seafood';
   private apiKey = 'key=AIzaSyAJafx3cfY7TzODG-y-OW3fY4XOiugFqmA';
+
+  // photos
+  // private photoUrl = 'https://maps.googleapis.com/maps/api/place/photo?';
+  // private photoWidth = 'maxwidth=100';
+  // private photoReference = '';
+  // private wholePhotoURL = this.photoUrl + this.photoWidth + '&' + this.photoReference;
+
+
 
   private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
   data: any = {};
@@ -67,6 +76,7 @@ export class QuestionBBAComponent implements OnInit {
     this.getData().subscribe(data => {
       console.log(data);
       this.data = data;
+      // console.log(data.results.photos[0].photoreference);
       this.getUserMarker();
       this.getAllMarkers();
     });
@@ -78,6 +88,7 @@ export class QuestionBBAComponent implements OnInit {
       map: this.map,
       title: 'Your location'
     });
+    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
   }
 
   getAllMarkers() {
