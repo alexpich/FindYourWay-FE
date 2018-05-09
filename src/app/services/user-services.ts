@@ -40,13 +40,13 @@ export class UserService {
         console.log(`Updating user: ${user.username}`);
         const json = JSON.stringify(user);
         console.log(user.userId);
-        return this.http.put<User>(API_URL + `users`, json, HTTP_OPTIONS);
+        return this.http.patch<User>(API_URL + `users`, json, HTTP_OPTIONS);
       }
 
       public createUser(user: User) {
         console.log(`Creating a user  ${user.username}`);
         const json = JSON.stringify(user);
         console.log(json);
-        return this.http.post<User>(API_URL + 'users/', json, HTTP_OPTIONS);
+        return this.http.post<User>(API_URL + 'users', json, HTTP_OPTIONS);
       }
 }
