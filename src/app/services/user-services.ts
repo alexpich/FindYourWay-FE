@@ -13,61 +13,69 @@ const HTTP_OPTIONS = {
 
 @Injectable()
 export class UserService {
-    loggedIn: User = JSON.parse(localStorage.getItem('credential'));
-    subscriber: BehaviorSubject<User> = new BehaviorSubject<User>(null);
-    constructor(private http: HttpClient) {
-        const u = localStorage.getItem('user');
-        if ( u !== '{}' && u !== undefined) {
-            this.subscriber.next(JSON.parse(u));
-      }
+  loggedIn: User = JSON.parse(localStorage.getItem('credential'));
+  subscriber: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+  constructor(private http: HttpClient) {
+    const u = localStorage.getItem('user');
+    if (u !== '{}' && u !== undefined) {
+      this.subscriber.next(JSON.parse(u));
     }
+  }
 
-      public loginUser(user: User) {
-        console.log(`Attempting to login user: ${user.username}`);
-        const json = JSON.stringify(user);
-        console.log(json);
-        return this.http.post<User>(API_URL + 'users/login', json, HTTP_OPTIONS);
-      }
+  public loginUser(user: User) {
+    console.log(`Attempting to login user: ${user.username}`);
+    const json = JSON.stringify(user);
+    console.log(json);
+    return this.http.post<User>(API_URL + 'users/login', json, HTTP_OPTIONS);
+  }
 
-      isLoggedIn() {
-        if (this.loggedIn == null) {
-          return false;
-        }
-        return true;
-      }
-
-      public updatesUser(user: User) {
-        console.log(`Updating user: ${user.username}`);
-        const json = JSON.stringify(user);
-        console.log(user.userId);
-        return this.http.put<User>(API_URL + `users`, json, HTTP_OPTIONS);
-      }
-
-      public createUser(user: User) {
-        console.log(`Creating a user  ${user.username}`);
-        const json = JSON.stringify(user);
-        console.log(json);
-        return this.http.post<User>(API_URL + 'users', json, HTTP_OPTIONS);
-      }
-
-      public delUser(user: User) {
-        console.log(`Deleteing user: ${user.username}`);
-        const json = JSON.stringify(user);
-        return this.http.request('DELETE', API_URL, {
-          headers: new HttpHeaders({
-              'Content-Type': 'application/json',
-          }),
-          body: { json }
-      });
+  isLoggedIn() {
+    if (this.loggedIn == null) {
+      return false;
     }
+    return true;
+  }
 
-      // public updatePoints(user: User, points: number) {
-      //   user.points = user.points + points;
-      //   console.log(`Updating points.  You now have: ${user.points}`);
-      //   this.updatesUser(user).subscribe(uuser => {
-      //     user = uuser;
-      //     localStorage.setItem('credential', JSON.stringify(user));
-      //     console.log(user);
-      // });
+  isAdmin() {
+    if (this.loggedIn.roleId === 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public updatesUser(user: User) {
+    console.log(`Updating user: ${user.username}`);
+    const json = JSON.stringify(user);
+    console.log(user.userId);
+    return this.http.put<User>(API_URL + `users`, json, HTTP_OPTIONS);
+  }
+
+  public createUser(user: User) {
+    console.log(`Creating a user  ${user.username}`);
+    const json = JSON.stringify(user);
+    console.log(json);
+    return this.http.post<User>(API_URL + 'users', json, HTTP_OPTIONS);
+  }
+
+  public delUser(user: User) {
+    console.log(`Deleteing user: ${user.username}`);
+    const json = JSON.stringify(user);
+    return this.http.request('DELETE', API_URL, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: { json }
+    });
+  }
+
+  // public updatePoints(user: User, points: number) {
+  //   user.points = user.points + points;
+  //   console.log(`Updating points.  You now have: ${user.points}`);
+  //   this.updatesUser(user).subscribe(uuser => {
+  //     user = uuser;
+  //     localStorage.setItem('credential', JSON.stringify(user));
+  //     console.log(user);
+  // });
   // }
 }
