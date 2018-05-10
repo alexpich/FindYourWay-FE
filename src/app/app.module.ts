@@ -41,7 +41,6 @@ import { QuestionCAComponent } from './components/question-c-a/question-c-a.comp
 import { QuestionCBComponent } from './components/question-c-b/question-c-b.component';
 import { QuestionCCComponent } from './components/question-c-c/question-c-c.component';
 
-import { FavoriteComponent } from './components/favorite/favorite.component';
 
 import { QuestionAAAComponent } from './components/question-a-a-a/question-a-a-a.component';
 import { QuestionAABComponent } from './components/question-a-a-b/question-a-a-b.component';
@@ -57,6 +56,8 @@ import { FavoriteServicesService } from './services/favorite-services.service';
 import { GoogleService } from './services/google-services';
 import { UpdateuserComponent } from './components/updateuser/updateuser.component';
 import { CouponComponent } from './components/coupon/coupon.component';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
+import { FavoriteComponent } from './components/favorite/favorite.component';
 
 
 
@@ -95,7 +96,6 @@ import { CouponComponent } from './components/coupon/coupon.component';
     QuestionCAComponent,
     QuestionCBComponent,
     QuestionCCComponent,
-    FavoriteComponent,
     QuestionAAAComponent,
     QuestionAABComponent,
     QuestionABAComponent,
@@ -104,7 +104,9 @@ import { CouponComponent } from './components/coupon/coupon.component';
     QuestionACAComponent,
     QuestionACBComponent,
     QuestionACCComponent,
-    CouponComponent
+    CouponComponent,
+    AdminPageComponent,
+    FavoriteComponent
 
 
 

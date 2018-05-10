@@ -30,8 +30,6 @@ import { QuestionABBComponent } from '../components/question-a-b-b/question-a-b-
 import { QuestionABCComponent } from '../components/question-a-b-c/question-a-b-c.component';
 import { QuestionACComponent } from '../components/question-a-c/question-a-c.component';
 
-import { FavoriteComponent } from '../components/favorite/favorite.component';
-
 import { QuestionACAComponent } from '../components/question-a-c-a/question-a-c-a.component';
 import { QuestionACBComponent } from '../components/question-a-c-b/question-a-c-b.component';
 import { QuestionACCComponent } from '../components/question-a-c-c/question-a-c-c.component';
@@ -39,7 +37,8 @@ import { UpdateuserComponent } from '../components/updateuser/updateuser.compone
 
 import { HomeComponent } from '../components/home/home.component';
 
-import { CouponComponent} from '../components/coupon/coupon.component';
+import { CouponComponent } from '../components/coupon/coupon.component';
+import { AdminPageComponent } from '../components/admin-page/admin-page.component';
 
 
 
@@ -57,6 +56,10 @@ export const routes: Routes = [
     {
         path: 'about',
         component: AboutComponent
+    },
+    {
+        path: 'admin-page',
+        component: AdminPageComponent
     },
     {
         path: 'help',
@@ -178,10 +181,6 @@ export const routes: Routes = [
     {
         path: 'question-c-c',
         component: QuestionCCComponent
-    },
-    {
-        path: 'favorite',
-        component: FavoriteComponent
     },
     {
         path: 'update',

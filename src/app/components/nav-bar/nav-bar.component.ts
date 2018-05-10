@@ -8,8 +8,9 @@ import { CouponComponent } from '../coupon/coupon.component';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import {CommonModule} from '@angular/common';
-import {UserService} from '../../services/user-services';
+import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user-services';
+import { Subscriber } from 'rxjs/Subscriber';
 
 
 @Component({
@@ -20,13 +21,22 @@ import {UserService} from '../../services/user-services';
 export class NavBarComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('credential'));
   points: number;
+  loggedin: boolean = (localStorage.getItem('credential') == null) ? false : true;
   constructor(private router: Router, private modalService: NgbModal, private users: UserService) {
     if (this.user == null) {
       this.points = 0;
     } else {
       this.points = this.user.points;
     }
-   }
+    this.users.subscriber.subscribe(loggedin => {
+      if (loggedin == null){
+        this.loggedin = false;
+      } else {
+        this.loggedin = true;
+        console.log(this.loggedin);
+      }
+    });
+  }
 
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
@@ -38,7 +48,7 @@ export class NavBarComponent implements OnInit {
 
   openVerticallyCenteredCoupon(coupon) {
     // this.users.updatePoints(this.user, -500);
-    this.modalService.open(coupon, {centered: true});
+    this.modalService.open(coupon, { centered: true });
   }
 
   ngOnInit() {
@@ -46,6 +56,10 @@ export class NavBarComponent implements OnInit {
 
   isLoggedIn(): boolean {
     return this.users.isLoggedIn();
+  }
+
+  isAdmin(): boolean {
+    return this.users.isAdmin();
   }
 
   logout() {
