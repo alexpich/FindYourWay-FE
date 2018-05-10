@@ -19,11 +19,6 @@ const HTTP_OPTIONS = {
 export class FavoriteComponent implements OnInit {
 
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
   favList: favoritePK[];
   item: number;
   constructor(private http: Http, private favoriteServiceService: FavoriteServicesService) {
