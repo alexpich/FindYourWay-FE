@@ -2,6 +2,9 @@
   <div class="navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li routerLinkActive="active current">
+        <a class="nav-link" routerLink='/home'>Home</a>
+      </li>
+      <li routerLinkActive="active current">
         <a class="nav-link" *ngIf="!loggedin" routerLink='/login'>Login</a>
       </li>
       <li routerLinkActive="active current">
@@ -13,11 +16,11 @@
       <li routerLinkActive="active current">
         <a class="nav-link" *ngIf="loggedin" routerLink='/update'>Profile</a>
       </li>
-      <li class = "nav-link" *ngIf="loggedin" routerLink='/login'(click)="logout()">Log Out</li>
+      <li class="nav-link" *ngIf="loggedin" routerLink='/login' (click)="logout()">Log Out</li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
-      <li class="nav-link" *ngIf="isAdmin()" routerLink='/admin-page'>Admin</li>
+      <li class="nav-link" *ngIf="admincheck==2" routerLink='/admin-page'>Admin</li>
       <li class="nav-link" (click)="openVerticallyCentered(about)">About</li>
 
       <li class="nav-link" (click)="openVerticallyCentered(content)">Help</li>
@@ -39,6 +42,9 @@
   <app-coupon></app-coupon>
 </ng-template>
 
-<div id= "coupons" align = "right" *ngIf="loggedin">
-<span class = "badge badge-success">Points: {{points}}<img src="https://image.flaticon.com/icons/svg/254/254209.svg" *ngIf="points>499" height="25" width="20" (click)="openVerticallyCenteredCoupon(coupon)"></span>
+<div id="coupons" align="right" *ngIf="loggedin">
+  <span class="badge badge-success">Points: {{points}}
+    <img src="https://image.flaticon.com/icons/svg/254/254209.svg" *ngIf="points>499" height="25" width="20"
+      (click)="openVerticallyCenteredCoupon(coupon)">
+  </span>
 </div>
