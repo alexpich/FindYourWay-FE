@@ -55,6 +55,11 @@ export class QuestionBBAComponent implements OnInit {
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
   }
 
+  getData() {
+    return this.http.get(this.wholeURL)
+      .map((res: Response) => res.json());
+  }
+
   getPlaces() {
     this.google.pQuery(this.userLocation, this.radius, this.type, this.keyword).subscribe(data => {
       console.log(data);
@@ -73,25 +78,15 @@ export class QuestionBBAComponent implements OnInit {
     marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
   }
 
-  // getUserMarker() {
-  //   const marker = new google.maps.Marker({
-  //     position: { lat: Number(this.userLat), lng: Number(this.userLng) },
-  //     map: this.map,
-  //     title: 'Your location'
-  //   });
-  // }
-
-  // getAllMarkers() {
-  //   for (let i = 0; i < this.data.results.length; i++) {
-  //     const populatedLocation = this.data.results[i].geometry.location;
-  //     const marker2 = new google.maps.Marker({
-  //       animation: google.maps.Animation.DROP,
-  //       position: populatedLocation,
-  //       map: this.map,
-  //       title: this.data.results[i].name
-  //     });
-  //   }
-  // }
-
-
+  getAllMarkers() {
+    for (let i = 0; i < this.data.results.length; i++) {
+      const populatedLocation = this.data.results[i].geometry.location;
+      const marker2 = new google.maps.Marker({
+        animation: google.maps.Animation.DROP,
+        position: populatedLocation,
+        map: this.map,
+        title: this.data.results[i].name
+      });
+    }
+  }
 }
