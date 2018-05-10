@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService} from '../../services/user-services';
+import { UserService } from '../../services/user-services';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-get-started',
@@ -13,7 +13,7 @@ export class GetStartedComponent implements OnInit {
   ngOnInit() {
   }
 
-  isLoggedin(){
+  isLoggedin() {
     if (this.user.isLoggedIn() === true) {
       console.log('we logged in');
       this.router.navigate(['questions']);
