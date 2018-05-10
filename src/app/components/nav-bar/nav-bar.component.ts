@@ -10,6 +10,7 @@ import { User } from '../../models/user';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user-services';
+import { Subscriber } from 'rxjs/Subscriber';
 
 
 @Component({
@@ -20,12 +21,21 @@ import { UserService } from '../../services/user-services';
 export class NavBarComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('credential'));
   points: number;
+  loggedin: boolean = (localStorage.getItem('credential') == null) ? false : true;
   constructor(private router: Router, private modalService: NgbModal, private users: UserService) {
     if (this.user == null) {
       this.points = 0;
     } else {
       this.points = this.user.points;
     }
+    this.users.subscriber.subscribe(loggedin => {
+      if (loggedin == null){
+        this.loggedin = false;
+      } else {
+        this.loggedin = true;
+        console.log(this.loggedin);
+      }
+    });
   }
 
   openVerticallyCentered(content) {
