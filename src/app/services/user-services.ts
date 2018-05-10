@@ -48,6 +48,10 @@ export class UserService {
     }
   }
 
+  public getAllUsers() {
+    return this.http.get(API_URL + `users`);
+  }
+
   public updatesUser(user: User) {
     console.log(`Updating user: ${user.username}`);
     const json = JSON.stringify(user);
@@ -63,14 +67,19 @@ export class UserService {
   }
 
   public delUser(user: User) {
-    console.log(`Deleteing user: ${user.username}`);
+    // console.log(value);
     const json = JSON.stringify(user);
-    return this.http.request('DELETE', API_URL, {
+
+    const HTTP_OPTIONS2 = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
-      body: { json }
-    });
+      body: json
+    };
+
+    console.log(HTTP_OPTIONS2);
+    // const json = JSON.stringify(this.favorite);
+    return this.http.delete<User>(API_URL + 'users', HTTP_OPTIONS2);
   }
 
   // public updatePoints(user: User, points: number) {
