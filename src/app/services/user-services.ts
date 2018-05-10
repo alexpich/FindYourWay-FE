@@ -65,7 +65,7 @@ export class UserService {
   public delUser(user: User) {
     console.log(`Deleteing user: ${user.username}`);
     const json = JSON.stringify(user);
-    return this.http.request('DELETE', API_URL, {
+    return this.http.delete(API_URL, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
