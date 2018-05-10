@@ -53,6 +53,7 @@ import { QuestionACBComponent } from './components/question-a-c-b/question-a-c-b
 import { QuestionACCComponent } from './components/question-a-c-c/question-a-c-c.component';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './services/user-services';
+import { FavoriteServicesService } from './services/favorite-services.service';
 import { GoogleService } from './services/google-services';
 import { UpdateuserComponent } from './components/updateuser/updateuser.component';
 import { CouponComponent } from './components/coupon/coupon.component';
@@ -118,7 +119,8 @@ import { CouponComponent } from './components/coupon/coupon.component';
     CommonModule
   ],
   providers: [UserService,
-    GoogleService],
+    GoogleService,
+    FavoriteServicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

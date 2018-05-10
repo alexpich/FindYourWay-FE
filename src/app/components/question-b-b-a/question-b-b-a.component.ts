@@ -5,6 +5,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { } from '@types/googlemaps';
+
+const HTTP_OPTIONS = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
+
 import { GoogleService } from '../../services/google-services';
 
 @Component({
@@ -26,7 +33,7 @@ export class QuestionBBAComponent implements OnInit {
   private radius = 'radius=15000';
   private type = 'type=restaurants';
   private keyword = 'keyword=seafood';
-  private apiKey = 'key=AIzaSyAJafx3cfY7TzODG-y-OW3fY4XOiugFqmA';
+  private apiKey = 'key=AIzaSyCVxPwgdh1ngz2yUsGyaUN-jN0WNYDBoaw';
 
   // photos
   // private photoUrl = 'https://maps.googleapis.com/maps/api/place/photo?';
@@ -55,6 +62,11 @@ export class QuestionBBAComponent implements OnInit {
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
   }
 
+  getData() {
+    return this.http.get(this.wholeURL)
+      .map((res: Response) => res.json());
+  }
+
   getPlaces() {
     this.google.pQuery(this.userLocation, this.radius, this.type, this.keyword).subscribe(data => {
       console.log(data);
@@ -73,25 +85,15 @@ export class QuestionBBAComponent implements OnInit {
     marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
   }
 
-  // getUserMarker() {
-  //   const marker = new google.maps.Marker({
-  //     position: { lat: Number(this.userLat), lng: Number(this.userLng) },
-  //     map: this.map,
-  //     title: 'Your location'
-  //   });
-  // }
-
-  // getAllMarkers() {
-  //   for (let i = 0; i < this.data.results.length; i++) {
-  //     const populatedLocation = this.data.results[i].geometry.location;
-  //     const marker2 = new google.maps.Marker({
-  //       animation: google.maps.Animation.DROP,
-  //       position: populatedLocation,
-  //       map: this.map,
-  //       title: this.data.results[i].name
-  //     });
-  //   }
-  // }
-
-
+  getAllMarkers() {
+    for (let i = 0; i < this.data.results.length; i++) {
+      const populatedLocation = this.data.results[i].geometry.location;
+      const marker2 = new google.maps.Marker({
+        animation: google.maps.Animation.DROP,
+        position: populatedLocation,
+        map: this.map,
+        title: this.data.results[i].name
+      });
+    }
+  }
 }

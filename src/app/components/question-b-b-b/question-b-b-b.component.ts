@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { } from '@types/googlemaps';
+import { FavoriteServicesService } from '../../services/favorite-services.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
@@ -22,7 +24,6 @@ export class QuestionBBBComponent implements OnInit {
 
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
-
   private apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
   private location = '28.060,-82.405';
   private radius = 'radius=15000';
@@ -33,7 +34,7 @@ export class QuestionBBBComponent implements OnInit {
   private wholeURL = this.apiURL + this.location + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
   data: any = {};
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private favoriteServiceService: FavoriteServicesService) {
     this.getPlaces();
     this.getData();
   }
@@ -56,7 +57,6 @@ export class QuestionBBBComponent implements OnInit {
     this.getData().subscribe(data => {
       console.log(data);
       this.data = data;
-      console.log(this.data.results[0].geometry.location);
       this.getUserMarker();
       this.getAllMarkers();
     });
@@ -93,5 +93,14 @@ export class QuestionBBBComponent implements OnInit {
         infowindow.open(this.map, marker2);
       });
     }
+  }
+  submit(value) {
+    this.favoriteServiceService.insertFavorite(value).subscribe(fav => {
+      if (fav == null) {
+        alert('Place already saved as a Favorite');
+    } else {
+     alert('Place saved to your Favorites');
+    }
+    });
   }
 }

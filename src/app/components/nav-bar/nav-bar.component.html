@@ -13,7 +13,7 @@
       <li routerLinkActive="active current">
         <a class="nav-link" *ngIf="isLoggedIn()" routerLink='/update'>Profile</a>
       </li>
-      <li class = "nav-link"*ngIf="" routerLink='/login'(click)="logout()">Log Out</li>
+      <li class = "nav-link"*ngIf="isLoggedIn()" routerLink='/login'(click)="logout()">Log Out</li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
@@ -39,5 +39,5 @@
   </ng-template>
 
 <div id= "coupons" align = "right" *ngIf="isLoggedIn()">
-<span class = "badge badge-warning">Points: {{points}}<img src="https://image.flaticon.com/icons/svg/254/254209.svg" *ngIf="points>499" height="25" width="20" (click)="openVerticallyCenteredCoupon(coupon)"></span>
+<span class = "badge badge-success">Points: {{points}}<img src="https://image.flaticon.com/icons/svg/254/254209.svg" *ngIf="points>499" height="25" width="20" (click)="openVerticallyCenteredCoupon(coupon)"></span>
 </div>
