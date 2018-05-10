@@ -22,13 +22,15 @@
       <li class="nav-link" (click)="openVerticallyCentered(content)">Help</li>
     </ul>
   </div>
-
+  <!-- <ion-item *ngIf="(user$ | async)?.anonymouse">
+    <ion-label>Login</ion-label>
+</ion-item> -->
   <ng-template #content let-c="close" let-d="dismiss"> 
     <app-help></app-help>
   </ng-template>
 
   <ng-template #about let-c="close" let-d="dismiss"> 
-    <app-about></app-about>
+      <app-about></app-about>
   </ng-template>
 </nav>
 
