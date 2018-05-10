@@ -14,7 +14,7 @@ export class GetStartedComponent implements OnInit {
   }
 
   isLoggedin() {
-    if (this.user.isLoggedIn() === true) {
+    if (this.user.loggedIn !== null) {
       console.log('we logged in');
       this.router.navigate(['questions']);
     } else {
