@@ -11,14 +11,19 @@
             </thead>
             <tbody>
             <tr *ngFor = "let fav of favList">
-              <td >{{fav.favoritePK.placeId}}</td>
-              <input class="btn btn-dark" type="submit" (click) = "delete(fav.favoritePK)" value="Delete">
-             </tr>
+              <ng-container *ngFor="let p of data.results">
+                <ng-container *ngIf="fav.favoritePK.placeId == p.place_id">
+                  <ng-container>
+                    <td>{{p.name}}</td>
+                    <input class="btn btn-dark" type="submit" (click) = "delete(fav.favoritePK)" value="Delete">
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
             </tbody>
             </table>
     </div>
     <div class="col-lg">
-      Maps
       <div #gmap style="width: 100%; height: 400px"></div>
     </div>
   </div>

@@ -31,7 +31,7 @@ export class QuestionBBBComponent implements OnInit {
   private radius = 'radius=15000';
   private type = 'type=restaurants';
   private keyword = 'keyword=seafood';
-  private apiKey = 'key=AIzaSyAJafx3cfY7TzODG-y-OW3fY4XOiugFqmA';
+  private apiKey = 'key=AIzaSyCXFRdeNA0TxToiWGlTVjOOMDbW1D1FNE4';
 
   private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
   data: any = {};
@@ -86,9 +86,9 @@ export class QuestionBBBComponent implements OnInit {
         icon: this.data.results[i].icon
       });
       const contentString = `<img src = "${photo}" width="100" height="100">
-                              <h1>${marker2.getTitle()}</h1>
-                              <h2>Rating: ${rate}</h2>
-                              <h3>Address: ${address}</h3>`;
+                              <h4>${marker2.getTitle()}</h4>
+                              <h5>Rating: ${rate}</h5>
+                              <h6>Address: ${address}</h6>`;
       const infowindow = new google.maps.InfoWindow({
         content: contentString
       });
