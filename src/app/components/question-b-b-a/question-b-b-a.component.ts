@@ -95,9 +95,9 @@ export class QuestionBBAComponent implements OnInit {
         icon: this.data.results[i].icon
       });
       const contentString = `<img src = "${photo}" width="100" height="100">
-      <h1>${marker2.getTitle()}</h1>
-      <h2>Rating: ${rate}</h2>
-      <h3>Address: ${address}</h3>`;
+                              <h4>${marker2.getTitle()}</h4>
+                              <h5>Rating: ${rate}</h5>
+                              <h6>Address: ${address}</h6>`;
       const infowindow = new google.maps.InfoWindow({
         content: contentString
       });

@@ -1,3 +1,32 @@
 <p>
   admin-page works!
 </p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">User ID #</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Location</th>
+      <th scope="col">Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of users">
+      <td>{{ i.userId }}</td>
+      <td>{{ i.username }}</td>
+      <td>{{ i.email }}</td>
+      <td>{{ i.firstname }}</td>
+      <td>{{ i.lastname }}</td>
+      <td>{{ i.location }}</td>
+      <td>{{ i.points }}</td>
+      <td>
+        <input class="btn btn-dark" type="submit" (click)="delete(i)" value="Delete">
+      </td>
+    </tr>
+    <tr>
+  </tbody>
+</table>

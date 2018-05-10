@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subscriber } from 'rxjs/Subscriber';
 
 const API_URL = environment.apiUrl;
 const HTTP_OPTIONS = {
@@ -14,9 +15,9 @@ const HTTP_OPTIONS = {
 @Injectable()
 export class UserService {
   loggedIn: User = JSON.parse(localStorage.getItem('credential'));
-  subscriber: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+  subscriber: BehaviorSubject<User> = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('null')));
   constructor(private http: HttpClient) {
-    const u = localStorage.getItem('user');
+    const u = localStorage.getItem('credential');
     if (u !== '{}' && u !== undefined) {
       this.subscriber.next(JSON.parse(u));
     }
@@ -29,23 +30,8 @@ export class UserService {
     return this.http.post<User>(API_URL + 'users/login', json, HTTP_OPTIONS);
   }
 
-  isLoggedIn() {
-    if (this.loggedIn == null) {
-      return false;
-    }
-    return true;
-  }
-
-  isAdmin() {
-    if (this.loggedIn == null) {
-      return false;
-    } else {
-      if (this.loggedIn.roleId === 2) {
-        return true;
-      } else {
-        return false;
-      }
-    }
+  public getAllUsers() {
+    return this.http.get(API_URL + `users`);
   }
 
   public updatesUser(user: User) {
@@ -63,14 +49,19 @@ export class UserService {
   }
 
   public delUser(user: User) {
-    console.log(`Deleteing user: ${user.username}`);
+    // console.log(value);
     const json = JSON.stringify(user);
-    return this.http.request('DELETE', API_URL, {
+
+    const HTTP_OPTIONS2 = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
-      body: { json }
-    });
+      body: json
+    };
+
+    console.log(HTTP_OPTIONS2);
+    // const json = JSON.stringify(this.favorite);
+    return this.http.delete<User>(API_URL + 'users', HTTP_OPTIONS2);
   }
 
   // public updatePoints(user: User, points: number) {
