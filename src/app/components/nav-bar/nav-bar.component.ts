@@ -8,8 +8,8 @@ import { CouponComponent } from '../coupon/coupon.component';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import {CommonModule} from '@angular/common';
-import {UserService} from '../../services/user-services';
+import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user-services';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class NavBarComponent implements OnInit {
     } else {
       this.points = this.user.points;
     }
-   }
+  }
 
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
@@ -38,7 +38,7 @@ export class NavBarComponent implements OnInit {
 
   openVerticallyCenteredCoupon(coupon) {
     // this.users.updatePoints(this.user, -500);
-    this.modalService.open(coupon, {centered: true});
+    this.modalService.open(coupon, { centered: true });
   }
 
   ngOnInit() {
