@@ -41,7 +41,6 @@ import { QuestionCAComponent } from './components/question-c-a/question-c-a.comp
 import { QuestionCBComponent } from './components/question-c-b/question-c-b.component';
 import { QuestionCCComponent } from './components/question-c-c/question-c-c.component';
 
-import { FavoriteComponent } from './components/favorite/favorite.component';
 
 import { QuestionAAAComponent } from './components/question-a-a-a/question-a-a-a.component';
 import { QuestionAABComponent } from './components/question-a-a-b/question-a-a-b.component';
@@ -96,7 +95,6 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
     QuestionCAComponent,
     QuestionCBComponent,
     QuestionCCComponent,
-    FavoriteComponent,
     QuestionAAAComponent,
     QuestionAABComponent,
     QuestionABAComponent,
