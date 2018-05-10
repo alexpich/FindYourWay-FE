@@ -36,7 +36,7 @@ export class QuestionBBAComponent implements OnInit {
   private radius = 'radius=15000';
   private type = 'type=restaurants';
   private keyword = 'keyword=seafood';
-  private apiKey = 'key=AIzaSyAJafx3cfY7TzODG-y-OW3fY4XOiugFqmA';
+  private apiKey = 'key=AIzaSyCXFRdeNA0TxToiWGlTVjOOMDbW1D1FNE4';
 
   private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
 

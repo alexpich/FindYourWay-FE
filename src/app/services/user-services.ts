@@ -37,10 +37,14 @@ export class UserService {
   }
 
   isAdmin() {
-    if (this.loggedIn.roleId === 2) {
-      return true;
-    } else {
+    if (this.loggedIn == null) {
       return false;
+    } else {
+      if (this.loggedIn.roleId === 2) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 
