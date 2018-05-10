@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
     this.clocation = this.currentLat + ',' + this.currentLong;
     this.regUser.location = this.clocation;
 
-    this.regUser.points = '0';
+    // this.regUser.points = '0';
 
     this.userservice.createUser(this.regUser).subscribe(users => {
       if (users === null) {

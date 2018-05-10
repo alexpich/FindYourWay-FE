@@ -1,8 +1,9 @@
-
-<p>drinking options</p>
+<p>
+  drinking options</p>
 
 <div>
   <ng-container *ngFor="let p of data.results">
+    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference={{p.photos[0].photo_reference}}&key=AIzaSyAJafx3cfY7TzODG-y-OW3fY4XOiugFqmA">
     <p>{{p.name}}</p>
     <p>{{p.vicinity}}</p>
     <p>{{p.rating}}</p>
@@ -13,4 +14,3 @@
 <p>
   question-c-b works!
 </p>
-

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-questions-a',
@@ -12,6 +12,7 @@ export class QuestionsAComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
   goBack() {
     this.location.back();
