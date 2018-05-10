@@ -35,8 +35,8 @@ export class NavBarComponent implements OnInit {
          this.loggedin = false;
        } else {
          this.loggedin = true;
-+        this.admincheck = loggedin.roleId;
-+        this.points = loggedin.points;
+        this.admincheck = loggedin.roleId;
+        this.points = loggedin.points;
        }
      });
   }
@@ -55,14 +55,6 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  isLoggedIn(): boolean {
-    return this.users.isLoggedIn();
-  }
-
-  isAdmin(): boolean {
-    return this.users.isAdmin();
   }
 
   logout() {
