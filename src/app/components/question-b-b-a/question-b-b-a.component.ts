@@ -60,8 +60,6 @@ export class QuestionBBAComponent implements OnInit {
       console.log(data);
       this.data = data;
       // console.log(data.results.photos[0].photoreference);
-      this.getUserMarker();
-      this.getAllMarkers();
     });
   }
 

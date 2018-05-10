@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import {CommonModule} from '@angular/common';
 
 // Components
 import { AppComponent } from './app.component';
@@ -54,6 +55,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from './services/user-services';
 import { GoogleService } from './services/google-services';
 import { UpdateuserComponent } from './components/updateuser/updateuser.component';
+import { CouponComponent } from './components/coupon/coupon.component';
 
 
 
@@ -92,9 +94,7 @@ import { UpdateuserComponent } from './components/updateuser/updateuser.componen
     QuestionCAComponent,
     QuestionCBComponent,
     QuestionCCComponent,
-
     FavoriteComponent,
-
     QuestionAAAComponent,
     QuestionAABComponent,
     QuestionABAComponent,
@@ -102,7 +102,8 @@ import { UpdateuserComponent } from './components/updateuser/updateuser.componen
     QuestionABCComponent,
     QuestionACAComponent,
     QuestionACBComponent,
-    QuestionACCComponent
+    QuestionACCComponent,
+    CouponComponent
 
 
 
@@ -113,7 +114,8 @@ import { UpdateuserComponent } from './components/updateuser/updateuser.componen
     HttpClientModule,
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [UserService,
     GoogleService],

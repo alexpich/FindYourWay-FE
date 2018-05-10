@@ -28,6 +28,7 @@ export class GoogleService {
       console.log ((API_URL + location + '&radius=' + radius + '&type=' + type + '&keyword=' + keyword + key));
       return this.http.get(API_URL + location + '&radius=' + radius + '&type=' + type + '&keyword=' + keyword + key);
   }
+
   getUserMarker(map: google.maps.Map) {
     const marker = new google.maps.Marker({
       position: { lat: Number(this.userLat), lng: Number(this.userLng) },
@@ -47,4 +48,5 @@ export class GoogleService {
       });
     }
 
+  }
 }
