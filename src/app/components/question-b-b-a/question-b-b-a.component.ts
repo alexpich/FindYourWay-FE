@@ -5,6 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { } from '@types/googlemaps';
+import { FavoriteServicesService } from '../../services/favorite-services.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { GoogleService } from '../../services/google-services';
 
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
@@ -12,7 +15,7 @@ const HTTP_OPTIONS = {
   })
 };
 
-import { GoogleService } from '../../services/google-services';
+
 
 @Component({
   selector: 'app-question-b-b-a',
@@ -33,15 +36,7 @@ export class QuestionBBAComponent implements OnInit {
   private radius = 'radius=15000';
   private type = 'type=restaurants';
   private keyword = 'keyword=seafood';
-  private apiKey = 'key=AIzaSyCVxPwgdh1ngz2yUsGyaUN-jN0WNYDBoaw';
-
-  // photos
-  // private photoUrl = 'https://maps.googleapis.com/maps/api/place/photo?';
-  // private photoWidth = 'maxwidth=100';
-  // private photoReference = '';
-  // private wholePhotoURL = this.photoUrl + this.photoWidth + '&' + this.photoReference;
-
-
+  private apiKey = 'key=AIzaSyCXFRdeNA0TxToiWGlTVjOOMDbW1D1FNE4';
 
   private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
 
@@ -49,6 +44,7 @@ export class QuestionBBAComponent implements OnInit {
 
   constructor(private http: Http, private google: GoogleService) {
     this.getPlaces();
+    this.getData();
 
   }
 
@@ -68,10 +64,11 @@ export class QuestionBBAComponent implements OnInit {
   }
 
   getPlaces() {
-    this.google.pQuery(this.userLocation, this.radius, this.type, this.keyword).subscribe(data => {
+    this.getData().subscribe(data => {
       console.log(data);
       this.data = data;
-      // console.log(data.results.photos[0].photoreference);
+      this.getUserMarker();
+      this.getAllMarkers();
     });
   }
 
@@ -80,19 +77,33 @@ export class QuestionBBAComponent implements OnInit {
       position: { lat: Number(this.userLat), lng: Number(this.userLng) },
       map: this.map,
       title: 'Your location'
-
     });
-    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
   }
 
   getAllMarkers() {
     for (let i = 0; i < this.data.results.length; i++) {
       const populatedLocation = this.data.results[i].geometry.location;
+      const photo = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=
+      ${this.data.results[i].photos[0].photo_reference}&${this.apiKey}`;
+      const rate = this.data.results[i].rating;
+      const address = this.data.results[i].vicinity;
       const marker2 = new google.maps.Marker({
         animation: google.maps.Animation.DROP,
         position: populatedLocation,
         map: this.map,
-        title: this.data.results[i].name
+        title: this.data.results[i].name,
+        icon: this.data.results[i].icon
+      });
+      const contentString = `<img src = "${photo}" width="100" height="100">
+      <h1>${marker2.getTitle()}</h1>
+      <h2>Rating: ${rate}</h2>
+      <h3>Address: ${address}</h3>`;
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      marker2.addListener('click', function () {
+        // alert('Simple Component\'s function...' + marker2.getTitle());
+        infowindow.open(this.map, marker2);
       });
     }
   }

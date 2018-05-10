@@ -25,13 +25,15 @@ export class QuestionBBBComponent implements OnInit {
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
   private apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
-  private location = '28.060,-82.405';
+  private userLocation = JSON.parse(localStorage.getItem('credential')).location;
+  private userLat = this.userLocation.slice(0, 9);
+  private userLng = this.userLocation.slice(10, 19);
   private radius = 'radius=15000';
   private type = 'type=restaurants';
-  private keyword = 'keyword=vegetarian';
+  private keyword = 'keyword=seafood';
   private apiKey = 'key=AIzaSyAJafx3cfY7TzODG-y-OW3fY4XOiugFqmA';
 
-  private wholeURL = this.apiURL + this.location + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
+  private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
   data: any = {};
 
   constructor(private http: Http, private favoriteServiceService: FavoriteServicesService) {
@@ -41,7 +43,7 @@ export class QuestionBBBComponent implements OnInit {
 
   ngOnInit() {
     const mapProp = {
-      center: new google.maps.LatLng(28.060, -82.405),
+      center: new google.maps.LatLng(Number(this.userLat), Number(this.userLng)),
       zoom: 11,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -61,20 +63,22 @@ export class QuestionBBBComponent implements OnInit {
       this.getAllMarkers();
     });
   }
+
   getUserMarker() {
     const marker = new google.maps.Marker({
-      position: { lat: 28.060, lng: -82.405 },
+      position: { lat: Number(this.userLat), lng: Number(this.userLng) },
       map: this.map,
       title: 'Your location'
     });
   }
+
   getAllMarkers() {
     for (let i = 0; i < this.data.results.length; i++) {
       const populatedLocation = this.data.results[i].geometry.location;
       const photo = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=
                       ${this.data.results[i].photos[0].photo_reference}&${this.apiKey}`;
       const rate = this.data.results[i].rating;
-      const address =  this.data.results[i].vicinity;
+      const address = this.data.results[i].vicinity;
       const marker2 = new google.maps.Marker({
         position: populatedLocation,
         map: this.map,
@@ -98,9 +102,9 @@ export class QuestionBBBComponent implements OnInit {
     this.favoriteServiceService.insertFavorite(value).subscribe(fav => {
       if (fav == null) {
         alert('Place already saved as a Favorite');
-    } else {
-     alert('Place saved to your Favorites');
-    }
+      } else {
+        alert('Place saved to your Favorites');
+      }
     });
   }
 }

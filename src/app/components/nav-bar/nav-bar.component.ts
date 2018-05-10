@@ -54,6 +54,14 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
   }
 
+  isLoggedIn(): boolean {
+    return this.users.isLoggedIn();
+  }
+
+  isAdmin(): boolean {
+    return this.users.isAdmin();
+  }
+
   logout() {
     localStorage.clear();
   }
