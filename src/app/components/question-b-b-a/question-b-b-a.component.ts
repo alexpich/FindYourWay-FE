@@ -7,7 +7,6 @@ import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { } from '@types/googlemaps';
 
-
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
