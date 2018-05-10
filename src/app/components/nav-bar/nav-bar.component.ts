@@ -33,7 +33,6 @@ export class NavBarComponent implements OnInit {
         this.loggedin = false;
       } else {
         this.loggedin = true;
-        console.log(this.loggedin);
       }
     });
   }

@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
       this.credential = users;
       localStorage.setItem('credential', JSON.stringify(users));
       console.log(JSON.stringify(localStorage.getItem('credential')));
-      // this.userservice.updatePoints(this.credential, 5);
       }
     });
   }
