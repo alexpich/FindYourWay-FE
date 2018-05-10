@@ -7,6 +7,6 @@ export class User {
     password: string;
     email: string;
     location: string;
-    points: string;
+    points: number;
     roleId: number;
 }

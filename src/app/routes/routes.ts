@@ -36,7 +36,11 @@ import { QuestionACAComponent } from '../components/question-a-c-a/question-a-c-
 import { QuestionACBComponent } from '../components/question-a-c-b/question-a-c-b.component';
 import { QuestionACCComponent } from '../components/question-a-c-c/question-a-c-c.component';
 import { UpdateuserComponent } from '../components/updateuser/updateuser.component';
+
 import { HomeComponent } from '../components/home/home.component';
+
+import { CouponComponent} from '../components/coupon/coupon.component';
+
 
 
 
@@ -182,5 +186,9 @@ export const routes: Routes = [
     {
         path: 'update',
         component: UpdateuserComponent
+    },
+    {
+        path: 'coupon',
+        component: CouponComponent
     }
 ];
