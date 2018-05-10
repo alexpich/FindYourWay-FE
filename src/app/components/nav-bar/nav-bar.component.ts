@@ -37,7 +37,7 @@ export class NavBarComponent implements OnInit {
   }
 
   openVerticallyCenteredCoupon(coupon) {
-    this.users.updatePoints(this.user, -500);
+    // this.users.updatePoints(this.user, -500);
     this.modalService.open(coupon, {centered: true});
   }
 
