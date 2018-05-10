@@ -12,9 +12,7 @@ export class CarouselComponent implements OnInit {
 
 
   image: HTMLImageElement;
-  images: any[] = [`https://images.pexels.com/photos/39803/pexels-photo-39803.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260`,
-    'http://xjehl.com/wp-content/uploads/2016/05/generic-people-02-1030x687.jpg',
-    'https://lifefm.com.au/wp-content/uploads/sites/280/2017/09/family.jpg'];
+  // images: any[] = [`../../assets/adventure.jpg`];
   counter = 0;
 
   ngOnInit() {
