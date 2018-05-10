@@ -60,11 +60,6 @@ export class QuestionBBAComponent implements OnInit {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
-
-    const contentString = 'hi';
-    const infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
   }
 
   getData() {
@@ -102,16 +97,4 @@ export class QuestionBBAComponent implements OnInit {
       });
     }
   }
-
-
-  // getInfoWindow() {
-  //   const contentString = 'test';
-  //   for (let i = 0; i < this.data.results.length; i++) {
-  //     const infowindow = new google.maps.InfoWindow({
-  //       content: contentString
-  //     });
-  //   }
-  // }
-
-
 }
