@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { getLocaleDateFormat } from '@angular/common';
@@ -6,13 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { } from '@types/googlemaps';
-
-
-const HTTP_OPTIONS = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-};
+import { GoogleService } from '../../services/google-services';
 
 @Component({
   selector: 'app-question-b-b-a',
@@ -21,6 +14,7 @@ const HTTP_OPTIONS = {
 })
 
 export class QuestionBBAComponent implements OnInit {
+
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
 
@@ -43,14 +37,12 @@ export class QuestionBBAComponent implements OnInit {
 
 
   private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
+
   data: any = {};
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private google: GoogleService) {
     this.getPlaces();
-    this.getData();
-    console.log(this.userLocation);
-    console.log(this.userLat);
-    console.log(this.userLng);
+
   }
 
   ngOnInit() {
@@ -59,6 +51,7 @@ export class QuestionBBAComponent implements OnInit {
       zoom: 11,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
+    google.maps.event.trigger(this.map, 'resize');
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
   }
 
@@ -68,12 +61,10 @@ export class QuestionBBAComponent implements OnInit {
   }
 
   getPlaces() {
-    this.getData().subscribe(data => {
+    this.google.pQuery(this.userLocation, this.radius, this.type, this.keyword).subscribe(data => {
       console.log(data);
       this.data = data;
       // console.log(data.results.photos[0].photoreference);
-      this.getUserMarker();
-      this.getAllMarkers();
     });
   }
 
@@ -82,6 +73,7 @@ export class QuestionBBAComponent implements OnInit {
       position: { lat: Number(this.userLat), lng: Number(this.userLng) },
       map: this.map,
       title: 'Your location'
+
     });
     marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
   }
