@@ -48,7 +48,7 @@ export class FavoriteComponent implements OnInit {
      this.favList = JSON.parse(localStorage.getItem('tables'));
      this.getPlaces();
     this.getData();
-    console.log(this.favList[0].favoritePK.placeId);
+    // console.log(this.favList[0].favoritePK.placeId);
    });
    const mapProp = {
     center: new google.maps.LatLng(Number(this.userLat), Number(this.userLng)),
