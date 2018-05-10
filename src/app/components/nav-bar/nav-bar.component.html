@@ -13,7 +13,7 @@
       <li routerLinkActive="active current">
         <a class="nav-link" *ngIf="isLoggedIn()" routerLink='/update'>Profile</a>
       </li>
-      <li class = "nav-link"*ngIf="" routerLink='/login'(click)="logout()">Log Out</li>
+      <li class = "nav-link"*ngIf="isLoggedIn()" routerLink='/login'(click)="logout()">Log Out</li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
