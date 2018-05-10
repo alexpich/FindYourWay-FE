@@ -37,7 +37,7 @@ import { UpdateuserComponent } from '../components/updateuser/updateuser.compone
 import { HomeComponent } from '../components/home/home.component';
 import { CouponComponent } from '../components/coupon/coupon.component';
 import { AdminPageComponent } from '../components/admin-page/admin-page.component';
-
+import { FavoriteComponent} from '../components/favorite/favorite.component';
 
 export const routes: Routes = [
     {
@@ -185,5 +185,9 @@ export const routes: Routes = [
     {
         path: 'coupon',
         component: CouponComponent
+    },
+    {
+        path: 'favorite',
+        component: FavoriteComponent
     }
 ];
