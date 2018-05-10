@@ -1,4 +1,6 @@
+
 import { Component, OnInit, ViewChild} from '@angular/core';
+
 import { FavoriteServicesService } from '../../services/favorite-services.service';
 import { Http, Response } from '@angular/http';
 import {favoritePK} from '../../models/favorite';
@@ -33,6 +35,7 @@ export class FavoriteComponent implements OnInit {
 
   private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
   data: any = {};
+
 
   favList: favoritePK[];
   item: number;
