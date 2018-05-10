@@ -28,5 +28,27 @@ export class FavoriteServicesService {
     // console.log(json2);
     return this.http.post<favoritePK>(API_URL + 'favorite', json2, HTTP_OPTIONS);
   }
+  public getAllFavorites() {
+    // console.log(this.http.get(API_URL + 'favorite/' + this.u.userId));
+    return this.http.get(API_URL + 'favorite/' + this.u.userId);
+  }
+  public deleteFavorite(value: String) {
 
+    // console.log(value);
+    const json = JSON.stringify(value);
+    // console.log(json);
+    const json2 = `{"favoritePK":${json}}`;
+    console.log(json2);
+
+    const HTTP_OPTIONS2 = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body : json2
+    };
+
+     console.log(HTTP_OPTIONS2);
+    // const json = JSON.stringify(this.favorite);
+    return this.http.delete<favoritePK>(API_URL + 'favorite', HTTP_OPTIONS2);
+  }
 }
