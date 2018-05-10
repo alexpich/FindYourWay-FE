@@ -29,7 +29,7 @@ export class NavBarComponent implements OnInit {
       this.points = this.user.points;
     }
     this.users.subscriber.subscribe(loggedin => {
-      if (loggedin == null){
+      if (loggedin == null) {
         this.loggedin = false;
       } else {
         this.loggedin = true;
