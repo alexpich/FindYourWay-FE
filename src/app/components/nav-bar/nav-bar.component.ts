@@ -22,6 +22,8 @@ export class NavBarComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('credential'));
   points: number;
   loggedin: boolean = (localStorage.getItem('credential') == null) ? false : true;
+  admincheck: number;
+
   constructor(private router: Router, private modalService: NgbModal, private users: UserService) {
     if (this.user == null) {
       this.points = 0;
@@ -29,12 +31,14 @@ export class NavBarComponent implements OnInit {
       this.points = this.user.points;
     }
     this.users.subscriber.subscribe(loggedin => {
-      if (loggedin == null){
-        this.loggedin = false;
-      } else {
-        this.loggedin = true;
-      }
-    });
+      if (loggedin == null) {
+         this.loggedin = false;
+       } else {
+         this.loggedin = true;
++        this.admincheck = loggedin.roleId;
++        this.points = loggedin.points;
+       }
+     });
   }
 
   openVerticallyCentered(content) {
@@ -63,5 +67,6 @@ export class NavBarComponent implements OnInit {
 
   logout() {
     localStorage.clear();
+    this.users.subscriber.next(null);
   }
 }

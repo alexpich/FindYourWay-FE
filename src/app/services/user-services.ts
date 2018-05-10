@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subscriber } from 'rxjs/Subscriber';
 
 const API_URL = environment.apiUrl;
 const HTTP_OPTIONS = {
@@ -14,7 +15,7 @@ const HTTP_OPTIONS = {
 @Injectable()
 export class UserService {
   loggedIn: User = JSON.parse(localStorage.getItem('credential'));
-  subscriber: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+  subscriber: BehaviorSubject<User> = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('credential')));
   constructor(private http: HttpClient) {
     const u = localStorage.getItem('user');
     if (u !== '{}' && u !== undefined) {
@@ -65,7 +66,7 @@ export class UserService {
   public delUser(user: User) {
     console.log(`Deleteing user: ${user.username}`);
     const json = JSON.stringify(user);
-    return this.http.delete(API_URL, {
+    return this.http.request('DELETE', API_URL, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
