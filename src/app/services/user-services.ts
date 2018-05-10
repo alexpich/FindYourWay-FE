@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subscriber } from 'rxjs/Subscriber';
 
 const API_URL = environment.apiUrl;
 const HTTP_OPTIONS = {
@@ -14,9 +15,9 @@ const HTTP_OPTIONS = {
 @Injectable()
 export class UserService {
   loggedIn: User = JSON.parse(localStorage.getItem('credential'));
-  subscriber: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+  subscriber: BehaviorSubject<User> = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('null')));
   constructor(private http: HttpClient) {
-    const u = localStorage.getItem('user');
+    const u = localStorage.getItem('credential');
     if (u !== '{}' && u !== undefined) {
       this.subscriber.next(JSON.parse(u));
     }
@@ -27,25 +28,6 @@ export class UserService {
     const json = JSON.stringify(user);
     console.log(json);
     return this.http.post<User>(API_URL + 'users/login', json, HTTP_OPTIONS);
-  }
-
-  isLoggedIn() {
-    if (this.loggedIn == null) {
-      return false;
-    }
-    return true;
-  }
-
-  isAdmin() {
-    if (this.loggedIn == null) {
-      return false;
-    } else {
-      if (this.loggedIn.roleId === 2) {
-        return true;
-      } else {
-        return false;
-      }
-    }
   }
 
   public getAllUsers() {
