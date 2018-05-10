@@ -48,6 +48,10 @@ export class NavBarComponent implements OnInit {
     return this.users.isLoggedIn();
   }
 
+  isAdmin(): boolean {
+    return this.users.isAdmin();
+  }
+
   logout() {
     localStorage.clear();
   }

@@ -57,6 +57,7 @@ import { FavoriteServicesService } from './services/favorite-services.service';
 import { GoogleService } from './services/google-services';
 import { UpdateuserComponent } from './components/updateuser/updateuser.component';
 import { CouponComponent } from './components/coupon/coupon.component';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 
 
@@ -104,7 +105,8 @@ import { CouponComponent } from './components/coupon/coupon.component';
     QuestionACAComponent,
     QuestionACBComponent,
     QuestionACCComponent,
-    CouponComponent
+    CouponComponent,
+    AdminPageComponent
 
 
 
