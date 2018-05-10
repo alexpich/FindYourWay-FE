@@ -61,12 +61,13 @@ export class UserService {
       });
     }
 
-      public updatePoints(user: User, points: number) {
-        user.points = user.points + points;
-        console.log(`Updating points.  You now have: ${user.points}`);
-        this.updatesUser(user).subscribe(uuser => {
-          user = uuser;
-          localStorage.setItem('credential', JSON.stringify(user));
-          console.log(user);
-      }
+      // public updatePoints(user: User, points: number) {
+      //   user.points = user.points + points;
+      //   console.log(`Updating points.  You now have: ${user.points}`);
+      //   this.updatesUser(user).subscribe(uuser => {
+      //     user = uuser;
+      //     localStorage.setItem('credential', JSON.stringify(user));
+      //     console.log(user);
+      // });
+  // }
 }
