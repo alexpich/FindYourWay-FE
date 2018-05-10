@@ -9,7 +9,7 @@
               </tr>
             </thead>
             <tbody>
-            <tr *ngFor = "let fav of favList">
+            <tr *ngFor = "let fav of favList2">
               <ng-container *ngFor="let p of data.results">
                 <ng-container *ngIf="fav.favoritePK.placeId == p.place_id">
                   <ng-container>

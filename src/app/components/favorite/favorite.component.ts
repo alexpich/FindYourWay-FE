@@ -29,12 +29,13 @@ export class FavoriteComponent implements OnInit {
   private radius = 'radius=15000';
   private type = 'type=restaurants';
   private keyword = 'keyword=seafood';
-  private apiKey = 'key=AIzaSyCXFRdeNA0TxToiWGlTVjOOMDbW1D1FNE4';
+  private apiKey = 'key=AIzaSyCVxPwgdh1ngz2yUsGyaUN-jN0WNYDBoaw';
 
   private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
   data: any = {};
 
-  favList: favoritePK[];
+  favList = favoritePK;
+  favList2: favoritePK[];
   item: number;
   constructor(private http: Http, private favoriteServiceService: FavoriteServicesService) {
   }
@@ -43,9 +44,10 @@ export class FavoriteComponent implements OnInit {
    this.favoriteServiceService.getAllFavorites().subscribe(tableinfo => {
      localStorage.setItem('tables', JSON.stringify(tableinfo));
      this.favList = JSON.parse(localStorage.getItem('tables'));
+     this.favList2 = JSON.parse(localStorage.getItem('tables'));
      this.getPlaces();
     this.getData();
-    console.log(this.favList[0].favoritePK.placeId);
+    // console.log(this.favList[0].favoritePK.placeId);
    });
    const mapProp = {
     center: new google.maps.LatLng(Number(this.userLat), Number(this.userLng)),
