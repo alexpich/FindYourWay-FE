@@ -1,22 +1,53 @@
-   <form>
-  First Name:<br>
-  <input type = "text" name = "firstname" [(ngModel)]= "currUser.firstname">
-  <br>
-  Last Name:<br>
-  <input type = "text" name = "lastname"[(ngModel)]= "currUser.lastname">
-  <br>
-  E-mail:<br>
-  <input type = "text" name = "email" [(ngModel)]= "currUser.email">
-  <br>
-  Username:<br>
-  <input type = "text" name = "username" [(ngModel)]= "currUser.username" >
-  <br>
-  Password:<br>
-  <input type = "password" name = "password" [(ngModel)]= "currUser.password">
-  <br>
-  Location:<br>
-  <input type = "text" name = "address" value = "{{this.currUser.Lat|number:'.3'}}, {{this.currUser.Long|number:'.3'}}" [(ngModel)]= "currUser.location" disabled >
-  <button type = "button" (click)="locator()"><img src="https://image.flaticon.com/icons/svg/35/35247.svg" height = "20" width = "20"></button>
-  <br><br>
-<button type = "submit" (click)="submit()" >Update</button>
-</form>
+<div id="carouselHome" class="carousel slide" data-ride="carousel" data-interval="4000">
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block img-fluid" src="../../../assets/pexels-photo-655837.jpeg" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+        <div class="container text-center">
+          <form>
+            <div class="form-group">
+              First Name:
+              <br>
+              <input type="text" name="firstname" [(ngModel)]="currUser.firstname">
+              <br>
+            </div>
+            <div class="form-group">
+              Last Name:
+              <br>
+              <input type="text" name="lastname" [(ngModel)]="currUser.lastname">
+              <br>
+            </div>
+            <div class="form-group">
+              E-mail:
+              <br>
+              <input type="text" name="email" [(ngModel)]="currUser.email">
+              <br>
+            </div>
+            <div class="form-group">
+              Username:
+              <br>
+              <input type="text" name="username" [(ngModel)]="currUser.username">
+              <br>
+            </div>
+            <div class="form-group">
+              Password:
+              <br>
+              <input type="password" name="password" [(ngModel)]="currUser.password">
+              <br>
+            </div>
+            Location:
+            <br>
+            <input type="text" name="address" value="{{this.currUser.Lat|number:'.3'}}, {{this.currUser.Long|number:'.3'}}" [(ngModel)]="currUser.location"
+              disabled>
+            <button type="button" (click)="locator()">
+              <img src="https://image.flaticon.com/icons/svg/35/35247.svg" height="20" width="20">
+            </button>
+            <br>
+            <br>
+            <button type="submit" (click)="submit()">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
