@@ -36,19 +36,13 @@ export class FavoriteComponent implements OnInit {
   private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
   data: any = {};
 
-<<<<<<< HEAD
-  favList = favoritePK;
+  favList: favoritePK;
   favList2: favoritePK[];
-=======
-
-  favList = favoritePK;
->>>>>>> c07e625193f7bef26f5fe9abd224f6a308a0b098
   item: number;
   constructor(private http: Http, private favoriteServiceService: FavoriteServicesService) {
   }
 
   ngOnInit() {
-<<<<<<< HEAD
    this.favoriteServiceService.getAllFavorites().subscribe(tableinfo => {
      localStorage.setItem('tables', JSON.stringify(tableinfo));
      this.favList = JSON.parse(localStorage.getItem('tables'));
@@ -56,6 +50,8 @@ export class FavoriteComponent implements OnInit {
      this.getPlaces();
     this.getData();
     // console.log(this.favList[0].favoritePK.placeId);
+    console.log(this.favList);
+    console.log(this.favList2);
    });
    const mapProp = {
     center: new google.maps.LatLng(Number(this.userLat), Number(this.userLng)),
@@ -63,21 +59,7 @@ export class FavoriteComponent implements OnInit {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
-=======
-    this.favoriteServiceService.getAllFavorites().subscribe(tableinfo => {
-      localStorage.setItem('tables', JSON.stringify(tableinfo));
-      this.favList = JSON.parse(localStorage.getItem('tables'));
-      this.getPlaces();
-      this.getData();
-      // console.log(this.favList[0].favoritePK.placeId);
-    });
-    const mapProp = {
-      center: new google.maps.LatLng(Number(this.userLat), Number(this.userLng)),
-      zoom: 11,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
->>>>>>> c07e625193f7bef26f5fe9abd224f6a308a0b098
+
   }
   getData() {
     return this.http.get(this.wholeURL)
@@ -101,9 +83,14 @@ export class FavoriteComponent implements OnInit {
   }
 
   getAllMarkers() {
-    for (let j = 0; j < this.favList.length; j++) {
+    // console.log(this.favList2.length);
+     console.log(this.data.results.length);
+    for (let j = 0; j < this.favList2.length; j++) {
       for (let i = 0; i < this.data.results.length; i++) {
+        // console.log(this.favList[j].favoritePK.placeId);
+        // console.log(this.data.results[i].place_id);
         if (this.favList[j].favoritePK.placeId === this.data.results[i].place_id) {
+         // console.log(this.favList[j].favoritePK.placeId);
           const populatedLocation = this.data.results[i].geometry.location;
           const photo = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=
                       ${this.data.results[i].photos[0].photo_reference}&${this.apiKey}`;
