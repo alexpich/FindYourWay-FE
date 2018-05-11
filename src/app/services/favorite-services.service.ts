@@ -2,6 +2,7 @@ import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { favoritePK } from '../models/favorite';
+import { User } from '../models/user';
 
 const API_URL = environment.apiUrl;
 const HTTP_OPTIONS = {
@@ -28,9 +29,10 @@ export class FavoriteServicesService {
     // console.log(json2);
     return this.http.post<favoritePK>(API_URL + 'favorite', json2, HTTP_OPTIONS);
   }
-  public getAllFavorites() {
-    // console.log(this.http.get(API_URL + 'favorite/' + this.u.userId));
-    return this.http.get(API_URL + 'favorite/' + this.u.userId);
+  public getAllFavorites(user: User) {
+    console.log( this.u.userId);
+
+    return this.http.get(API_URL + 'favorite/' + user.userId);
   }
   public deleteFavorite(value: String) {
 

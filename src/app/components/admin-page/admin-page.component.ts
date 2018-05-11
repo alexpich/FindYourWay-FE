@@ -28,6 +28,7 @@ export class AdminPageComponent implements OnInit {
         alert('Deleted');
       }
     });
+    window.location.reload();
   }
 
 }

@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { } from '@types/googlemaps';
 import { stringify } from '@angular/compiler/src/util';
+import { User } from '../../models/user';
 
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
@@ -26,24 +27,25 @@ export class FavoriteComponent implements OnInit {
   map: google.maps.Map;
   private apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
   private userLocation = JSON.parse(localStorage.getItem('credential')).location;
-  private userLat = this.userLocation.slice(0, 9);
-  private userLng = this.userLocation.slice(10, 19);
+  private userLat = this.userLocation.slice(0, 8);
+  private userLng = this.userLocation.slice(11, 19);
   private radius = 'radius=15000';
   private type = 'type=restaurants';
   private keyword = 'keyword=seafood';
-  private apiKey = 'key=AIzaSyCVxPwgdh1ngz2yUsGyaUN-jN0WNYDBoaw';
+  private apiKey = 'key=AIzaSyAJafx3cfY7TzODG-y-OW3fY4XOiugFqmA';
+  user: User = JSON.parse(localStorage.getItem('credential'));
 
   private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
   data: any = {};
 
-  favList: favoritePK;
+  favList = favoritePK;
   favList2: favoritePK[];
   item: number;
   constructor(private http: Http, private favoriteServiceService: FavoriteServicesService) {
   }
 
   ngOnInit() {
-   this.favoriteServiceService.getAllFavorites().subscribe(tableinfo => {
+   this.favoriteServiceService.getAllFavorites(this.user).subscribe(tableinfo => {
      localStorage.setItem('tables', JSON.stringify(tableinfo));
      this.favList = JSON.parse(localStorage.getItem('tables'));
      this.favList2 = JSON.parse(localStorage.getItem('tables'));
@@ -68,7 +70,6 @@ export class FavoriteComponent implements OnInit {
 
   getPlaces() {
     this.getData().subscribe(data => {
-      console.log(data);
       this.data = data;
       this.getUserMarker();
       this.getAllMarkers();

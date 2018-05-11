@@ -64,13 +64,15 @@ export class UserService {
     return this.http.delete<User>(API_URL + 'users', HTTP_OPTIONS2);
   }
 
-  // public updatePoints(user: User, points: number) {
-  //   user.points = user.points + points;
-  //   console.log(`Updating points.  You now have: ${user.points}`);
-  //   this.updatesUser(user).subscribe(uuser => {
-  //     user = uuser;
-  //     localStorage.setItem('credential', JSON.stringify(user));
-  //     console.log(user);
-  // });
-  // }
+  public updatePoints(user: User, points: number) {
+    user.points = user.points + points;
+    const pass = localStorage.getItem('password');
+    user.password = pass;
+    console.log(`Updating points.  You now have: ${user.points}`);
+    this.updatesUser(user).subscribe(uuser => {
+      user = uuser;
+      localStorage.setItem('credential', JSON.stringify(user));
+      console.log(user);
+  });
+  }
 }

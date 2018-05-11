@@ -12,7 +12,7 @@
         <input class="form-control" type="text" name="lastname" [(ngModel)]= "regUser.lastname" pattern = ".{2,25}" title="Last name needs to be between 2 - 25 characters">
         <br> E-mail:
         <br>
-        <input class="form-control" type="email" name="email" [(ngModel)]= "regUser.email">
+        <input class="form-control" type="email" name="email" [(ngModel)]= "regUser.email" >
         <br> Username:
         <br>
         <input class="form-control" type="text" name="username" [(ngModel)]= "regUser.username" pattern = ".{2,15}" title="Username needs to be between 2 - 15 characters">
@@ -27,16 +27,13 @@
         </button>
         <br>
         <br>
-        <select id = "role">
-          <option value="1">User</option>
-          <option value="2">Admin</option>
-        </select>
-        <br>
-        <br>
         <button class="btn btn-primary" type="submit" (click) = "submit()" >Submit!</button>
       </form>
     </div>
     <div class="col-sm-3"></div>
   </div>
+  <p class="alert-message" *ngIf="alert">
+    {{alert}}
+  </p>
 </div>
 

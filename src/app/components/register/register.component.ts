@@ -3,6 +3,7 @@ import { DecimalPipe } from '@angular/common';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user-services';
 import { Router } from '@angular/router';
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'app-register',
@@ -38,26 +39,34 @@ export class RegisterComponent implements OnInit {
 
   success(position) {
 
-      this.currentLat = position.coords.latitude;
-      this.currentLong = position.coords.longitude;
+    this.currentLat = position.coords.latitude;
+    this.currentLong = position.coords.longitude;
 
-      console.log(this.currentLat + ', ' + this.currentLong);
+    console.log(this.currentLat + ', ' + this.currentLong);
   }
 
   submit() {
     const role = document.getElementById('role') as HTMLInputElement;
-
-    this.regUser.roleId = Number(role.value) ;
+    this.regUser.points = 0;
+    this.regUser.roleId = 1;
     this.clocation = this.currentLat + ',' + this.currentLong;
     this.regUser.location = this.clocation;
-
+    if (this.currentLat === undefined && this.currentLong === undefined) {
+      this.currentLat = '0';
+      this.currentLong = '0';
+    }
+    this.clocation = this.currentLat + ',' + this.currentLong;
+    this.regUser.location = this.clocation;
     // this.regUser.points = '0';
-
+    console.log(this.regUser);
     this.userservice.createUser(this.regUser).subscribe(users => {
-      if (users === null) {
+
+      if (users === undefined) {
+        console.log('we in null');
         this.alert = 'Could not complete registration';
       } else {
-        this.alert = 'Registration is complete';
+        console.log('we in else');
+        this.router.navigate(['login']);
       }
     });
 
