@@ -1,15 +1,12 @@
-<p>seafood options</p>
-
 <div class="container-fluid">
     <div class="row">
       <div class="col-lg">
           <ng-container *ngFor="let p of data.results">
-              <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference={{p.photos[0].photo_reference}}&key=AIzaSyCXFRdeNA0TxToiWGlTVjOOMDbW1D1FNE4">
+              <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference={{p.photos[0].photo_reference}}&key=AIzaSyCVxPwgdh1ngz2yUsGyaUN-jN0WNYDBoaw">
               <p>{{p.name}}</p>
               <p>{{p.vicinity}}</p>
               <p>{{p.rating}}</p>
               <input class="btn btn-dark" type="submit" (click) = "submit(p.place_id)" value="Add Favorite">
-             <!-- <button class="btn btn-dark" type="submit" (click) = "submit(p.place_id)" >Add Favorite</button>-->
              <hr>
             </ng-container>
       </div>

@@ -15,8 +15,6 @@ const HTTP_OPTIONS = {
   })
 };
 
-
-
 @Component({
   selector: 'app-question-b-b-a',
   templateUrl: './question-b-b-a.component.html',
@@ -36,16 +34,14 @@ export class QuestionBBAComponent implements OnInit {
   private radius = 'radius=15000';
   private type = 'type=restaurants';
   private keyword = 'keyword=seafood';
-  private apiKey = 'key=AIzaSyCXFRdeNA0TxToiWGlTVjOOMDbW1D1FNE4';
+  private apiKey = 'key=AIzaSyCVxPwgdh1ngz2yUsGyaUN-jN0WNYDBoaw';
 
   private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
-
   data: any = {};
 
-  constructor(private http: Http, private google: GoogleService) {
+  constructor(private http: Http, private favoriteServiceService: FavoriteServicesService) {
     this.getPlaces();
     this.getData();
-
   }
 
   ngOnInit() {
@@ -54,7 +50,6 @@ export class QuestionBBAComponent implements OnInit {
       zoom: 11,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    google.maps.event.trigger(this.map, 'resize');
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
   }
 
@@ -84,11 +79,10 @@ export class QuestionBBAComponent implements OnInit {
     for (let i = 0; i < this.data.results.length; i++) {
       const populatedLocation = this.data.results[i].geometry.location;
       const photo = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=
-      ${this.data.results[i].photos[0].photo_reference}&${this.apiKey}`;
+                      ${this.data.results[i].photos[0].photo_reference}&${this.apiKey}`;
       const rate = this.data.results[i].rating;
       const address = this.data.results[i].vicinity;
       const marker2 = new google.maps.Marker({
-        animation: google.maps.Animation.DROP,
         position: populatedLocation,
         map: this.map,
         title: this.data.results[i].name,
@@ -105,6 +99,11 @@ export class QuestionBBAComponent implements OnInit {
         // alert('Simple Component\'s function...' + marker2.getTitle());
         infowindow.open(this.map, marker2);
       });
+    }
+  }
+  submit(value) {
+    if (this.favoriteServiceService.insertFavorite(value).subscribe()) {
+      alert('Place saved to your Favorites');
     }
   }
 }

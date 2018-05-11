@@ -30,7 +30,8 @@ export class QuestionBBCComponent implements OnInit {
   private radius = 'radius=15000';
   private type = 'type=restaurants';
   private keyword = 'keyword=steak';
-  private apiKey = 'key=AIzaSyCXFRdeNA0TxToiWGlTVjOOMDbW1D1FNE4';
+
+  private apiKey = 'key=AIzaSyCVxPwgdh1ngz2yUsGyaUN-jN0WNYDBoaw';
 
   private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
   data: any = {};
@@ -98,12 +99,8 @@ export class QuestionBBCComponent implements OnInit {
     }
   }
   submit(value) {
-    this.favoriteServiceService.insertFavorite(value).subscribe(fav => {
-      if (fav == null) {
-        alert('Place already saved as a Favorite');
-      } else {
-        alert('Place saved to your Favorites');
-      }
-    });
+    if (this.favoriteServiceService.insertFavorite(value).subscribe()) {
+      alert('Place saved to your Favorites');
+    }
   }
 }
