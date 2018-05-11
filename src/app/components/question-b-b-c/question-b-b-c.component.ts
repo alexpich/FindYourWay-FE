@@ -30,6 +30,7 @@ export class QuestionBBCComponent implements OnInit {
   private radius = 'radius=15000';
   private type = 'type=restaurants';
   private keyword = 'keyword=steak';
+
   private apiKey = 'key=AIzaSyCVxPwgdh1ngz2yUsGyaUN-jN0WNYDBoaw';
 
   private wholeURL = this.apiURL + this.userLocation + '&' + this.radius + '&' + this.type + '&' + this.keyword + '&' + this.apiKey;
