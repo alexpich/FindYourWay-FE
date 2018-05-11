@@ -9,4 +9,6 @@ export class User {
     location: string;
     points: number;
     roleId: number;
+    Long: number;
+    Lat: number;
 }
