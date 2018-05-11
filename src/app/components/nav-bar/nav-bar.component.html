@@ -1,6 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="navbar-collapse">
+    <div class="navbar-header">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+  <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
     <ul class="navbar-nav mr-auto">
+      <li routerLinkActive="active current">
+        <a class="nav-link" routerLink='/home'>Home</a>
+      </li>
       <li routerLinkActive="active current">
         <a class="nav-link" *ngIf="!loggedin" routerLink='/login'>Login</a>
       </li>
@@ -13,7 +21,7 @@
       <li routerLinkActive="active current">
         <a class="nav-link" *ngIf="loggedin" routerLink='/update'>Profile</a>
       </li>
-      <li class = "nav-link" *ngIf="loggedin" routerLink='/login'(click)="logout()">Log Out</li>
+      <li class="nav-link" *ngIf="loggedin" routerLink='/login' (click)="logout()">Log Out</li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
@@ -39,6 +47,9 @@
   <app-coupon></app-coupon>
 </ng-template>
 
-<div id= "coupons" align = "right" *ngIf="loggedin">
-<span class = "badge badge-success">Points: {{points}}<img src="https://image.flaticon.com/icons/svg/254/254209.svg" *ngIf="points>499" height="25" width="20" (click)="openVerticallyCenteredCoupon(coupon)"></span>
+<div id="coupons" align="right" *ngIf="loggedin">
+  <span class="badge badge-success">Points: {{points}}
+    <img src="https://image.flaticon.com/icons/svg/254/254209.svg" *ngIf="points>499" height="25" width="20"
+      (click)="openVerticallyCenteredCoupon(coupon)">
+  </span>
 </div>
