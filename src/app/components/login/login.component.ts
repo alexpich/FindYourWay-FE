@@ -33,10 +33,12 @@ export class LoginComponent implements OnInit {
     } else {
       console.log(users);
       this.userservice.subscriber.next(users);
+      localStorage.setItem('password', users.password);
       users.password = '';
       this.credential = users;
       localStorage.setItem('credential', JSON.stringify(users));
       console.log(JSON.stringify(localStorage.getItem('credential')));
+      this.router.navigate(['/home']);
       }
     });
   }

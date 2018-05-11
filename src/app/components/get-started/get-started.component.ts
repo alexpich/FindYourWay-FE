@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user-services';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-get-started',
   templateUrl: './get-started.component.html',
@@ -8,18 +10,23 @@ import { Router } from '@angular/router';
 })
 export class GetStartedComponent implements OnInit {
 
+  loggedin: boolean = (localStorage.getItem('credential') == null) ? false : true;
   constructor(private user: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.user.subscriber.subscribe(loggedin => {
+      if (loggedin == null) {
+         this.loggedin = false;
+       } else {
+         this.loggedin = true;
+       }
+     });
   }
 
   isLoggedin() {
-    if (this.user.loggedIn !== null) {
-      console.log('we logged in');
-      this.router.navigate(['questions']);
-    } else {
-      console.log('we not in');
-      this.router.navigate(['login']);
-    }
+    this.router.navigate(['questions']);
+  }
+  isLoggedout() {
+    this.router.navigate(['login']);
   }
 }
