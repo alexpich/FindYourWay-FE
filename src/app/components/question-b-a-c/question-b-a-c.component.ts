@@ -25,8 +25,8 @@ export class QuestionBACComponent implements OnInit {
   map: google.maps.Map;
   private apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
   private userLocation = JSON.parse(localStorage.getItem('credential')).location;
-  private userLat = this.userLocation.slice(0, 9);
-  private userLng = this.userLocation.slice(10, 19);
+  private userLat = this.userLocation.slice(0, 8);
+  private userLng = this.userLocation.slice(11, 19);
   private radius = 'radius=15000';
   private type = 'type=restaurants';
   private keyword = 'keyword=taco';
