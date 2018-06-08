@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://findyourway-env.7cxshhunvk.us-east-1.elasticbeanstalk.com/'
+  // apiUrl: 'http://findyourway-env.7cxshhunvk.us-east-1.elasticbeanstalk.com/'
+  apiUrl: 'http://localhost:5000/'
 };
