@@ -41,6 +41,8 @@ export class RegisterComponent implements OnInit {
 
     this.currentLat = position.coords.latitude;
     this.currentLong = position.coords.longitude;
+    this.currentLat = this.currentLat.substr(0, 7);
+    this.currentLong = this.currentLong.substr(8, this.currentLong.length);
 
     console.log(this.currentLat + ', ' + this.currentLong);
   }
